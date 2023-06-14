@@ -1,0 +1,29 @@
+.page {
+	margin-top: 10%;
+	margin-right: 10%;
+	margin-left: 10%;
+	margin-bottom: 20%;
+	border: 2px solid rgb(209, 225, 250);
+	padding-bottom: 50px;
+}
+
+.main-container {
+	text-align: center;
+	margin-top: 50px;
+	padding-top: 20px;
+	margin-left: 8%;
+	margin-right: 8%;
+	margin-bottom: 2%;
+	border-radius: 20px;
+	background-color: rgb(228, 227, 227);
+}
+
+.bio {
+	text-align: left;
+	/* font-size: 18px; */
+	flex-basis: 0;
+	flex-grow: 1;
+	max-width: 100%;
+	line-height: 2rem;
+	color: grey;
+}

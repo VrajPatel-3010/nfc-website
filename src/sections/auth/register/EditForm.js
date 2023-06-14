@@ -107,7 +107,7 @@ export default function EditForm() {
             <RHFTextField name="org" label="Organization" />
           </Stack>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-            <RHFTextField name="info" label="About us" />
+            <RHFTextField name="info" label="About us" maxlength="255"/>
           </Stack>
 
           <Typography variant="h4" gutterBottom>

@@ -23,6 +23,7 @@ export default function RHFTextField({ name, ...other }) {
           fullWidth
           value={typeof field.value === 'number' && field.value === 0 ? '' : field.value}
           error={!!error}
+          inputProps={{ maxLength: 255 }}
           helperText={error?.message}
           {...other}
         />

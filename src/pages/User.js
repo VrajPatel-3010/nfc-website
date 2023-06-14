@@ -2,12 +2,14 @@ import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
 import { useRef, useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import AuthService from "../services/auth.service";
+
 // material
 import { Menu, MenuItem, IconButton, ListItemIcon, ListItemText } from '@mui/material';
 // material
 import { faker } from '@faker-js/faker';
 import { sample } from 'lodash';
-import { useNavigate } from 'react-router-dom';
 
 import {
   Card,
@@ -77,6 +79,15 @@ function applySortFilter(array, comparator, query) {
 
 export default function User() {
   const navigate = useNavigate();
+  const user = AuthService.getCurrentUser();
+  let loginId = 0
+  if (user) {
+    loginId = user.id;
+  }
+  // if (state.state != null && state.state.response != null && state.state.response.id != null) {
+  //   loginId = state.state.response.id;
+  //   console.log("Login Id",loginId)
+  // }
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [page, setPage] = useState(0);
@@ -98,10 +109,11 @@ export default function User() {
   };
   const [USERLIST, setUSERLIST] = useState([]);
   useEffect(() => {
-    service.getAll()
+    service.getIdList(loginId)
       .then(resp => {
-        console.log(resp.data)
+        if(resp.data.length > 0){
         setUSERLIST(resp.data)
+        }
       })
   }, []);
   const handleSelectAllClick = (event) => {
@@ -150,19 +162,19 @@ export default function User() {
 
   const deleteData = (e, id) => {
     e.preventDefault()
-   navigate('/dashboard/register', {
-    state: {
-      id
-    }
-  });  
-  }
-  const editData = (e, id) => {
-    e.preventDefault()
-    navigate('/dashboard/register',  {
+    navigate('/dashboard/register', {
       state: {
         id
       }
-    });  
+    });
+  }
+  const editData = (e, id) => {
+    e.preventDefault()
+    navigate('/dashboard/register', {
+      state: {
+        id
+      }
+    });
   }
 
   return (
@@ -204,7 +216,7 @@ export default function User() {
                         tabIndex={-1}
                         role=""
                       >
-                        
+
                         <TableCell component="th" scope="row">
                           <Stack direction="row" alignItems="center" spacing={2}>
                             <Avatar alt={firstname} src={"data:" + type + ";base64," + data} />
@@ -218,14 +230,14 @@ export default function User() {
                         <TableCell align="left">{email}</TableCell>
                         <TableCell align="right">
                           {/* <UserMoreMenu /> */}
-                        <TableCell align="right">
+                          <TableCell align="right">
                             <IconButton onClick={(event) => editData(event, id)}>
-                              <Iconify icon="eva:edit-fill" width={24} height={24} color="green"/>
+                              <Iconify icon="eva:edit-fill" width={24} height={24} color="green" />
                             </IconButton>
                             <IconButton onClick={(event) => deleteData(event, id)}>
-                              <Iconify icon="eva:trash-2-outline" width={24} height={24} color="red"/>
+                              <Iconify icon="eva:trash-2-outline" width={24} height={24} color="red" />
                             </IconButton>
-                        </TableCell>
+                          </TableCell>
                         </TableCell>
                       </TableRow>
                     );

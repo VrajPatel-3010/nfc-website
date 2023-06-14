@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import {useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 // material
 import { styled } from '@mui/material/styles';
 //
 import DashboardNavbar from './DashboardNavbar';
 import DashboardSidebar from './DashboardSidebar';
+import $ from 'jquery';
 
 // ----------------------------------------------------------------------
 
@@ -33,8 +35,11 @@ const MainStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function DashboardLayout() {
-  const [open, setOpen] = useState(false);
-
+  const [open, setOpen] = useState(false); 
+  window.onload = () => {
+    $("#homePage,#footer").hide();
+    $(window).scrollTop(0);
+  }
   return (
     <RootStyle>
       <DashboardNavbar onOpenSidebar={() => setOpen(true)} />

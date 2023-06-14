@@ -31,12 +31,11 @@ const navConfig = [
     path: '/dashboard/products',
     icon: getIcon('eva:shopping-bag-fill'),
   },
-  {
-    title: 'login',
-    path: '/login',
-    icon: getIcon('eva:lock-fill'),
-  },
-  
+  // {
+  //   title: 'Demo',
+  //   path: '/dashboard/portfolio',
+  //   icon: getIcon('eva:shopping-bag-fill'),
+  // },
 ];
 
 export default navConfig;

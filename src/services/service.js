@@ -1,7 +1,5 @@
 import http from "../http-common";
 
-const API_URL = "http://localhost:8080/api/auth/";
-
 class service {
   getAll() {
     return http.get("/tutorials");
@@ -9,6 +7,10 @@ class service {
 
   get(id) {
     return http.get(`/tutorials/${id}`);
+  }
+
+  getIdList(id) {
+    return http.get(`/tutorialList/${id}`);
   }
 
   create(data) {

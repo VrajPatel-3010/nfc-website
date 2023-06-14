@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
@@ -10,11 +8,10 @@ import useResponsive from '../hooks/useResponsive';
 import Page from '../components/Page';
 import Logo from '../components/Logo';
 // sections
-import { LoginForm } from '../sections/auth/login';
+import { RegisterForm } from '../sections/auth/register';
+import { RegisterFormLogin } from '../sections/auth/register';
+
 import AuthSocial from '../sections/auth/AuthSocial';
-import { Route,Routes } from 'react-router-dom';
-import Register from '../pages/Register';
-import $ from 'jquery';
 
 // ----------------------------------------------------------------------
 
@@ -61,24 +58,21 @@ const ContentStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function Login() {
+export default function RegisterUser() {
   const smUp = useResponsive('up', 'sm');
 
   const mdUp = useResponsive('up', 'md');
-  useEffect(() => {
-    $("#homePage,#footer").hide();
-  }, []);
+
   return (
-    <Page title="Login">
+    <Page title="Register">
       <RootStyle>
         <HeaderStyle>
           <Logo />
-
           {smUp && (
             <Typography variant="body2" sx={{ mt: { md: -2 } }}>
-              Don’t have an account? {''}
-              <Link variant="subtitle2" component={RouterLink} to="/registerUser">
-                Get started
+              Already have an account? {''}
+              <Link variant="subtitle2" component={RouterLink} to="/login">
+                Login
               </Link>
             </Typography>
           )}
@@ -87,29 +81,41 @@ export default function Login() {
         {mdUp && (
           <SectionStyle>
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-              Hi, Welcome Back
+              Manage the profile more effectively with us
             </Typography>
-            <img src="/static/illustrations/illustration_login.png" alt="login" />
+            <img alt="register" src="/static/illustrations/illustration_login.png" />
           </SectionStyle>
         )}
 
-        <Container maxWidth="sm">
+        <Container>
           <ContentStyle>
             <Typography variant="h4" gutterBottom>
-              Sign in
+              Get started absolutely free.
             </Typography>
 
-            <Typography sx={{ color: 'text.secondary', mb: 5 }}>Enter your details below.</Typography>
+            <Typography sx={{ color: 'text.secondary', mb: 5 }}>Free forever. No credit card needed.</Typography>
 
             <AuthSocial />
 
-            <LoginForm />
+            <RegisterFormLogin />
+
+            <Typography variant="body2" align="center" sx={{ color: 'text.secondary', mt: 3 }}>
+              By registering, I agree to Minimal&nbsp;
+              <Link underline="always" color="text.primary" href="#">
+                Terms of Service
+              </Link>
+              {''}and{''}
+              <Link underline="always" color="text.primary" href="#">
+                Privacy Policy
+              </Link>
+              .
+            </Typography>
 
             {!smUp && (
-              <Typography variant="body2" align="center" sx={{ mt: 3 }}>
-                Don’t have an account?{' '}
-                <Link variant="subtitle2" component={RouterLink} to="/registerUser">
-                  Get started
+              <Typography variant="body2" sx={{ mt: 3, textAlign: 'center' }}>
+                Already have an account?{' '}
+                <Link variant="subtitle2" to="/login" component={RouterLink}>
+                  Login
                 </Link>
               </Typography>
             )}
@@ -117,6 +123,5 @@ export default function Login() {
         </Container>
       </RootStyle>
     </Page>
-    
   );
 }

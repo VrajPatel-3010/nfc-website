@@ -1,4 +1,7 @@
 import { Navigate, useRoutes } from 'react-router-dom';
+import { useEffect } from 'react';
+import $ from 'jquery';
+
 // layouts
 import DashboardLayout from './layouts/dashboard';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
@@ -14,9 +17,13 @@ import DashboardApp from './pages/DashboardApp';
 // ----------------------------------------------------------------------
 
 export default function Router() {
+  useEffect(() => {
+    $("#homePage").hide();
+    $(window).scrollTop(0);
+  }, []);
   return useRoutes([
     {
-      path: '/dashboard',
+      path: '/dashboard/*',
       element: <DashboardLayout />,
       children: [
         { path: 'app', element: <DashboardApp /> },

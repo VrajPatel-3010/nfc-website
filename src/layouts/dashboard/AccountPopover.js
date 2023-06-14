@@ -1,5 +1,11 @@
 import { useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import Login from '../../pages/Login';
+import Router from '../../../src/routes';
+
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton } from '@mui/material';
@@ -7,19 +13,21 @@ import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton } from '@
 import MenuPopover from '../../components/MenuPopover';
 // mocks_
 import account from '../../_mock/account';
+import $ from 'jquery';
+import AuthService from "../../services/auth.service";
 
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
   {
-    label: 'Home',
+    label: 'Dashboard',
     icon: 'eva:home-fill',
-    linkTo: '/',
+    linkTo: '/dashboard/app',
   },
   {
-    label: 'Profile',
+    label: 'User',
     icon: 'eva:person-fill',
-    linkTo: '#',
+    linkTo: '/dashboard/user',
   },
   {
     label: 'Settings',
@@ -32,8 +40,22 @@ const MENU_OPTIONS = [
 
 export default function AccountPopover() {
   const anchorRef = useRef(null);
+  const navigate = useNavigate();
 
   const [open, setOpen] = useState(null);
+  const [currentUser, setCurrentUser] = useState(undefined);
+  //Retrive Id
+  //Retrive Id
+  const user = AuthService.getCurrentUser();
+  let email = "";
+  let username = ""
+  if (user) {
+    email = user.email
+    username = user.username
+  }
+
+  $("#homePage,#footer").hide();
+
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
@@ -41,6 +63,13 @@ export default function AccountPopover() {
 
   const handleClose = () => {
     setOpen(null);
+  };
+
+  const logOut = () => {
+    AuthService.logout();
+    setCurrentUser(undefined);
+    navigate('/Login');
+    $(window).scrollTop(0);
   };
 
   return (
@@ -82,10 +111,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle2" noWrap>
-            {account.displayName}
+            {username}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
+            {email}
           </Typography>
         </Box>
 
@@ -101,10 +130,14 @@ export default function AccountPopover() {
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
-        <MenuItem onClick={handleClose} sx={{ m: 1 }}>
+        <MenuItem onClick={logOut} sx={{ m: 1 }} >
           Logout
         </MenuItem>
       </MenuPopover>
+      {/* <Router />  */}
+      <Routes>
+        <Route path="/Login" element={<Login />} />
+      </Routes>
     </>
   );
 }

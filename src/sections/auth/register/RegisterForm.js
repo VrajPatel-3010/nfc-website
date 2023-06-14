@@ -13,6 +13,7 @@ import { LoadingButton } from '@mui/lab';
 import Iconify from '../../../components/Iconify';
 import { FormProvider, RHFTextField } from '../../../components/hook-form';
 import service from "../../../services/service";
+import AuthService from "../../../services/auth.service";
 
 // ----------------------------------------------------------------------
 
@@ -26,6 +27,12 @@ export default function RegisterForm() {
 
   if (id.state != null && id.state.id != null) {
     formId = id.state.id
+  }
+
+  const user = AuthService.getCurrentUser();
+  let loginId = 0
+  if (user) {
+    loginId = user.id;
   }
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -57,6 +64,7 @@ export default function RegisterForm() {
     whatsappNo: '',
     url: '',
     attachment: '',
+    loginId: loginId,
   };
   const methods = useForm({
     resolver: yupResolver(RegisterSchema),
@@ -87,6 +95,7 @@ export default function RegisterForm() {
             info: resp.data.info,
             whatsappNo: resp.data.whatsappNo,
             url: resp.data.url,
+            loginId: resp.data.loginId,
           }))
         })
     }
@@ -180,7 +189,7 @@ export default function RegisterForm() {
             <RHFTextField name="org" label="Organization" />
           </Stack>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-            <RHFTextField name="info" label="About us" />
+            <RHFTextField name="info" label="About us"/>
           </Stack>
 
           <Typography variant="h4" gutterBottom>

@@ -1,20 +1,33 @@
 // routes
+import React, { useEffect,useState } from "react";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
 import Router from './routes';
 // theme
 import ThemeProvider from './theme';
 // components
-import ScrollToTop from './components/ScrollToTop';
-import { BaseOptionChartStyle } from './components/chart/BaseOptionChart';
 import "./App.css";
+import Homepage from './components/HomePage';
+import Footer from './components/Footer';
+import $ from 'jquery';
 
 // ----------------------------------------------------------------------
 
 export default function App() {
+
+  useEffect(() => {
+    $("#homePage").show();
+  }, []);
   return (
     <ThemeProvider>
-      <ScrollToTop />
+      <Homepage />
+      {/* <ScrollToTop />
       <BaseOptionChartStyle />
-      <Router />
+       */}
+       {/* <Router /> */}
+       <Footer/>
     </ThemeProvider>
   );
 }

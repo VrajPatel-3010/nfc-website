@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: Inter, sans-serif;
+
 }
 
 .App-logo {
@@ -54,4 +56,50 @@
   background-color: #f2dede;
   border-color: #ebccd1;
   color: #a94442;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+.items-start {
+  align-items: flex-start;
+}
+.flex {
+  display: flex;
+}
+
+.duration-200 {
+  transition-duration: 200ms;
+}
+
+.text-gray-200 {
+    --tw-text-opacity: 1;
+    color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+
+.text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+.w-full {
+    width: 100%;
+}
+.mt-8 {
+    margin-top: 2rem;
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
+.rounded {
+  border-radius: 0.25rem;
 }
