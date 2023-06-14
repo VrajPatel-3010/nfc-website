@@ -1,8 +1,8 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "http://localhost:8080/api/auth/";
-//const API_URL = "http://ec2-35-171-19-209.compute-1.amazonaws.com:8080/api/auth/";
+//const API_URL = "http://localhost:8080/api/auth/";
+const API_URL = "http://ec2-44-204-204-236.compute-1.amazonaws.com:8080/api/auth/";
 
 const getPublicContent = () => {
   return axios.get(API_URL + "all");
