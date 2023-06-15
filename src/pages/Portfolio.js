@@ -59,7 +59,7 @@ export default function Portfolio() {
       // 'EMAIL;type=HOME:info@abchomeautomation.com\n'+
       'EMAIL;type=WORK:' +  email  + '\n' +
       'PHOTO;ENCODING=b;MEDIATYPE=image/'+type+':'+data +'\n' +
-      'TEL;VALUE=uri;TYPE="voice,cell":tel:+1' +phone+'\n' +
+      'TEL;TYPE=WORK,VOICE:+1 ' +phone+'\n' +
       // 'TEL;VALUE=uri;TYPE="voice,home":tel:+1 (877) 879-3222\n' +
       // 'TEL;VALUE=uri;TYPE="voice,work":tel:+1 (877) 879-3222\n' +
       'ADR;TYPE=WORK;LABEL="Work Address":;;'+address+'\n' +
@@ -91,6 +91,8 @@ export default function Portfolio() {
           </div>
           <div className="text">
             <div className="text-block">{USERLIST.firstName}&nbsp;{USERLIST.lastName}</div>
+            <br></br>
+
             <div className="text-block-2">{USERLIST.info}</div>
             <div className="text-block-3"><FaMobileAlt /> <a href={phoneTxt} style={{ color: "black" }}>{USERLIST.phone}</a></div>
             <div className="text-block-4"><FaWhatsapp /> {USERLIST.whatsappNo}</div>

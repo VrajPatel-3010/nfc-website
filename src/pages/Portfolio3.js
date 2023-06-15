@@ -61,7 +61,7 @@ export default function Portfolio3() {
       // 'EMAIL;type=HOME:info@abchomeautomation.com\n'+
       'EMAIL;type=WORK:' + email + '\n' +
       'PHOTO;ENCODING=b;MEDIATYPE=image/' + type + ':' + data + '\n' +
-      'TEL;VALUE=uri;TYPE="voice,cell":tel:+1' + phone + '\n' +
+      'TEL;TYPE=WORK,VOICE:+1 ' +phone+'\n' +
       // 'TEL;VALUE=uri;TYPE="voice,home":tel:+1 (877) 879-3222\n' +
       // 'TEL;VALUE=uri;TYPE="voice,work":tel:+1 (877) 879-3222\n' +
       'ADR;TYPE=WORK;LABEL="Work Address":;;' + address + '\n' +
@@ -113,7 +113,6 @@ export default function Portfolio3() {
                   <a onClick={() => downloadTxtFile(CreateVCard())} className="btn primary-btn">
                     <div>SAVE&nbsp;CONTACT</div>
                   </a>
-
                 </div>
               </div>
             </div>
