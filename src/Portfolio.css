@@ -290,7 +290,7 @@ img {
 @media screen and (max-width: 479px){
 .profilephotoTh1 {
     left: auto;
-    top: 0%;
+    top: -1%;
     bottom: 90px;
 }
 .logodesktop {

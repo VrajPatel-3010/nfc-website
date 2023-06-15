@@ -206,8 +206,8 @@ export default function User() {
                 />
                 <TableBody>
                   {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, title, data, type, firstname, org, email } = row;
-                    const isItemSelected = selected.indexOf(firstname) !== -1;
+                    const { id, title, data, type, firstName, org, email } = row;
+                    const isItemSelected = selected.indexOf(firstName) !== -1;
 
                     return (
                       <TableRow
@@ -219,13 +219,13 @@ export default function User() {
 
                         <TableCell component="th" scope="row">
                           <Stack direction="row" alignItems="center" spacing={2}>
-                            <Avatar alt={firstname} src={"data:" + type + ";base64," + data} />
+                            <Avatar alt={firstName} src={"data:" + type + ";base64," + data} />
                             <Typography variant="subtitle2" noWrap>
                               {title}
                             </Typography>
                           </Stack>
                         </TableCell>
-                        <TableCell align="left">{firstname}</TableCell>
+                        <TableCell align="left">{firstName}</TableCell>
                         <TableCell align="left">{org}</TableCell>
                         <TableCell align="left">{email}</TableCell>
                         <TableCell align="right">
