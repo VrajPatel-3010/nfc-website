@@ -5,7 +5,7 @@ function Footer() {
   return (
     <>
       <div id="footer">
-      <div className="services">
+      {/* <div className="services">
         <div className="card-cover">
           <div className="row">
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
@@ -19,7 +19,7 @@ function Footer() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <section>
         <div className="c8scd c9ud7 c2jnb czfl2">
           <div className="c1hks chh1r c17pb">
@@ -41,8 +41,9 @@ function Footer() {
                     </g>
                   </svg>
                 </div>
-                <h4 className="c8dbe cn6zh cynqs">Create custom cards</h4>
-                <p className="c23lu">Create cards that work exactly as you configured them. Make real-time decisions on charges and spendings.</p>
+                <h4 className="c8dbe cn6zh cynqs">Digital Profile</h4>
+                <p className="c23lu">Create an engaging and memorable experience for the people you meet while saving your contact information directly into their phone with smart business card
+</p>
               </div>
               {/* 2nd item */}
               <div className="cotx2 c9rfx ckjl3 cdjn1 c34lp cmhky cyx82 cwwxq cf208 cilu6 cxd6l c8zdl aos-init aos-animate" data-aos="fade-up" data-aos-delay={100}>
@@ -60,8 +61,8 @@ function Footer() {
                     </g>
                   </svg>
                 </div>
-                <h4 className="c8dbe cn6zh cynqs">Create custom cards</h4>
-                <p className="c23lu">Create cards that work exactly as you configured them. Make real-time decisions on charges and spendings.</p>
+                <h4 className="c8dbe cn6zh cynqs">Landing Page</h4>
+                <p className="c23lu">Create customize landing page with contact share information with multiple formats just like website</p>
               </div>
               {/* 3rd item */}
               <div className="cotx2 c9rfx ckjl3 cdjn1 c34lp cmhky cyx82 cwwxq cf208 cilu6 cxd6l c8zdl aos-init aos-animate" data-aos="fade-up" data-aos-delay={200}>
@@ -79,8 +80,8 @@ function Footer() {
                     </g>
                   </svg>
                 </div>
-                <h4 className="c8dbe cn6zh cynqs">Create custom cards</h4>
-                <p className="c23lu">Create cards that work exactly as you configured them. Make real-time decisions on charges and spendings.</p>
+                <h4 className="c8dbe cn6zh cynqs">Portfolio</h4>
+                <p className="c23lu">Your identity is what sets you apart. Use Digital Card to showcase a fuller and more impressive picture of who you are—beyond your job title—for a more meaningful interaction.</p>
               </div>
             </div>
           </div>
