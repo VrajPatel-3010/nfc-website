@@ -95,7 +95,7 @@ export default function RegisterUser() {
 
             <Typography sx={{ color: 'text.secondary', mb: 5 }}>Free forever. No credit card needed.</Typography>
 
-            <AuthSocial />
+            {/* <AuthSocial /> */}
 
             <RegisterFormLogin />
 

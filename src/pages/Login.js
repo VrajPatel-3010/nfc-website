@@ -66,8 +66,9 @@ export default function Login() {
 
   const mdUp = useResponsive('up', 'md');
   useEffect(() => {
+    
     $("#homePage,#footer").hide();
-  }, []);
+  });
   return (
     <Page title="Login">
       <RootStyle>

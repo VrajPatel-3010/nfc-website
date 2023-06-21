@@ -3,6 +3,8 @@ import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
+import {useNavigate} from 'react-router-dom';
+import $ from 'jquery';
 
 // ----------------------------------------------------------------------
 
@@ -22,7 +24,15 @@ export default function Logo({ disabledLink = false, sx }) {
 
   
   const logo = <Box component="img" src="/static/nav-logo.svg" sx={{ width: 40, height: 40, ...sx }} />
+  const navigate = useNavigate();
+  
 
+  const navigateToHome = () => {
+    // 👇️ navigate to /Login
+    navigate('/');
+    $("#homePage,#footer").show();
+    $(window).scrollTop(0);
+  };
   // OR
   // const logo = (
   //   <Box sx={{ width: 40, height: 40, ...sx }}>
@@ -65,6 +75,6 @@ export default function Logo({ disabledLink = false, sx }) {
   }
 
   return (
-  <RouterLink to="/Login">{logo}</RouterLink>
+  <a  onClick={navigateToHome}>{logo}</a>
   );
 }

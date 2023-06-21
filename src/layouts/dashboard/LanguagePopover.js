@@ -11,7 +11,7 @@ const LANGS = [
   {
     value: 'en',
     label: 'English',
-    icon: '/static/icons/ic_flag_en.svg',
+    icon: '/static/icons/ic_flag_fr.svg',
   },
 ];
 
@@ -43,7 +43,7 @@ export default function LanguagePopover() {
           }),
         }}
       >
-        <img src={LANGS[0].icon} alt={LANGS[0].label} />
+        <img src={LANGS[0].icon} alt={LANGS[0].label} style={{maxWidth:"70%"}} />
       </IconButton>
 
       <MenuPopover

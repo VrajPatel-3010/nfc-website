@@ -17,9 +17,6 @@ import $ from 'jquery';
 
 export default function App() {
 
-  useEffect(() => {
-    $("#homePage").show();
-  }, []);
   return (
     <ThemeProvider>
       <Homepage />
