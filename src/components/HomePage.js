@@ -22,9 +22,7 @@ import LogoOnlyLayout from '../layouts/LogoOnlyLayout';
 
 export default function HomePage() {
   const navigate = useNavigate();
-  useEffect(() => {
-    $("#homePage").show();
-  }, []);
+  
 
   const navigateToLogin = () => {
     // 👇️ navigate to /Login
@@ -32,6 +30,9 @@ export default function HomePage() {
     $("#homePage,#footer").hide();
     $(window).scrollTop(0);
   };
+  useEffect(() => {
+    $("#homePage,#footer").show();
+  },[]);
   return (
     <>
       <div id="homePage" style={{ backgroundColor: "#111827", minHeight: "100%" }}>
