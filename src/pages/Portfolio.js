@@ -51,22 +51,22 @@ export default function Portfolio() {
   const CreateVCard = () => {
     let vCard = 'BEGIN:VCARD\n' +
       'VERSION:4.0\n' +
-      'FN:' +  firstName + lastName  + '\n' +
-      'N:' +  lastName +';'+ firstName+ ';\n' +
+      'FN:' + firstName + lastName + '\n' +
+      'N:' + lastName + ';' + firstName + ';\n' +
       // 'GENDER:M\n'+
       // 'UID:69531f4a-c34d-4a1e-8922-bd38a9476a53\n'+
       // 'BDAY:19850101\n'+
       // 'EMAIL;type=HOME:info@abchomeautomation.com\n'+
-      'EMAIL;type=WORK:' +  email  + '\n' +
-      'PHOTO;ENCODING=b;MEDIATYPE=image/'+type+':'+data +'\n' +
-      'TEL;TYPE=WORK,VOICE:+1 ' +phone+'\n' +
+      'EMAIL;type=WORK:' + email + '\n' +
+      'PHOTO;ENCODING=b;MEDIATYPE=image/' + type + ':' + data + '\n' +
+      'TEL;TYPE=WORK,VOICE:+1 ' + phone + '\n' +
       // 'TEL;VALUE=uri;TYPE="voice,home":tel:+1 (877) 879-3222\n' +
       // 'TEL;VALUE=uri;TYPE="voice,work":tel:+1 (877) 879-3222\n' +
-      'ADR;TYPE=WORK;LABEL="Work Address":;;'+address+'\n' +
-      'TITLE:'+title+'\n' +
+      'ADR;TYPE=WORK;LABEL="Work Address":;;' + address + '\n' +
+      'TITLE:' + title + '\n' +
       // 'ROLE:Director\n' +
-      'ORG:'+org+'\n' +
-      'URL:'+url+'\n' +
+      'ORG:' + org + '\n' +
+      'URL:' + url + '\n' +
       // 'URL;type=WORK:https://acme-corporation/enesser\n' +
       // 'NOTE:Notes on Satwinder\n' +
       // 'X-SOCIALPROFILE;TYPE=facebook:https://...\n' +
@@ -105,6 +105,11 @@ export default function Portfolio() {
             <div className="cta">SAVE&nbsp;CONTACT</div>
           </a>
         </div>
+      </div>
+      <div className="text-center">
+        <a onClick={() => AuthService.confirmTheme(phone, 1)} className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1ja87p4-MuiButtonBase-root-MuiButton-root">
+          <div className="cta">Confirm&nbsp;Theme</div>
+        </a>
       </div>
     </div>
   )

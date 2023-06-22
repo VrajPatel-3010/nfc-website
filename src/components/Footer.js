@@ -63,7 +63,7 @@ function Footer() {
                     </g>
                   </svg>
                 </div>
-                <h4 className="c8dbe cn6zh cynqs">Landing Page</h4>
+                <h4 className="c8dbe cn6zh cynqs">Custom Designed Card</h4>
                 <p className="c23lu">Create customize landing page with contact share information with multiple formats just like website</p>
               </div>
               {/* 3rd item */}

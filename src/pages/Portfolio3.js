@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { FaMapMarkerAlt, FaMobileAlt, FaWhatsapp,FaMailBulk } from "react-icons/fa";
-import {  MdEmail } from "react-icons/md";
+import { FaMapMarkerAlt, FaMobileAlt, FaWhatsapp, FaMailBulk } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 import { useEffect } from 'react';
 import AuthService from "../services/auth.service";
@@ -61,7 +61,7 @@ export default function Portfolio3() {
       // 'EMAIL;type=HOME:info@abchomeautomation.com\n'+
       'EMAIL;type=WORK:' + email + '\n' +
       'PHOTO;ENCODING=b;MEDIATYPE=image/' + type + ':' + data + '\n' +
-      'TEL;TYPE=WORK,VOICE:+1 ' +phone+'\n' +
+      'TEL;TYPE=WORK,VOICE:+1 ' + phone + '\n' +
       // 'TEL;VALUE=uri;TYPE="voice,home":tel:+1 (877) 879-3222\n' +
       // 'TEL;VALUE=uri;TYPE="voice,work":tel:+1 (877) 879-3222\n' +
       'ADR;TYPE=WORK;LABEL="Work Address":;;' + address + '\n' +
@@ -119,15 +119,20 @@ export default function Portfolio3() {
 
           </div>
           <div className="row">
-            <div style={{lineHeight: "2rem"}}>
-            <div><FaMobileAlt /> <a href={phoneTxt} style={{color:"black"}}>{USERLIST.phone}</a></div>
-            <div><FaWhatsapp /> {USERLIST.whatsappNo}</div> 
-            <div><FaMailBulk /> <a href={mail} style={{ color: "black" }}>{USERLIST.email}</a></div> 
-            <div><FaMapMarkerAlt /> {USERLIST.address}</div> 
+            <div style={{ lineHeight: "2rem" }}>
+              <div><FaMobileAlt /> <a href={phoneTxt} style={{ color: "black" }}>{USERLIST.phone}</a></div>
+              <div><FaWhatsapp /> {USERLIST.whatsappNo}</div>
+              <div><FaMailBulk /> <a href={mail} style={{ color: "black" }}>{USERLIST.email}</a></div>
+              <div><FaMapMarkerAlt /> {USERLIST.address}</div>
             </div>
           </div>
         </div>
       </section>
+      <div className="text-center mt-5">
+        <a onClick={() => AuthService.confirmTheme(phone, 3)} className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1ja87p4-MuiButtonBase-root-MuiButton-root">
+          <div className="cta">Confirm&nbsp;Theme</div>
+        </a>
+      </div>
     </div>
   )
 };

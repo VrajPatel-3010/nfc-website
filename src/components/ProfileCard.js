@@ -82,28 +82,36 @@ function ProfileCard(props) {
 	};
 
 	return (
-		<div className="card-container">
-			<header>
-				<img src={"data:" + USERLIST.type + ";base64," + USERLIST.data} alt="ABC" />
-			</header>
-			<h1 className="bold-text">
-				{props.name} <span className="normal-text">{props.title}</span>
-			</h1>
-			<h2 className="normal-text">{props.info}</h2>
-			<div className="actionbar">
-			<div className="text-center">
-				<a onClick={() => downloadTxtFile(CreateVCard())} className="link-block-cta w-inline-block">
-					<div className="cta">SAVE&nbsp;CONTACT</div>
+		<>
+			<div className="card-container">
+				<header>
+					<img src={"data:" + USERLIST.type + ";base64," + USERLIST.data} alt="ABC" />
+				</header>
+				<h1 className="bold-text">
+					{props.name} <span className="normal-text">{props.title}</span>
+				</h1>
+				<h2 className="normal-text">{props.info}</h2>
+				<div className="actionbar">
+					<div className="text-center">
+						<a onClick={() => downloadTxtFile(CreateVCard())} className="link-block-cta w-inline-block">
+							<div className="cta">SAVE&nbsp;CONTACT</div>
+						</a>
+					</div>
+				</div>
+				<div className="social-container">
+					<div><FaMobileAlt /> &nbsp;<a href={phoneTxt} style={{ color: "black" }}>{props.phone}</a></div>
+					<div><FaWhatsapp /> &nbsp;{props.whatsappNo}</div>
+					<div> <FaMailBulk /> &nbsp;<a href={mail} style={{ color: "black" }}>{props.email}</a></div>
+					<div><FaMapMarkerAlt /> &nbsp;{props.address}</div>
+				</div>
+			</div>
+
+			<div className="text-center mt-5">
+				<a onClick={() => AuthService.confirmTheme(props.phone, 4)} className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1ja87p4-MuiButtonBase-root-MuiButton-root">
+					<div className="cta">Confirm&nbsp;Theme</div>
 				</a>
 			</div>
-			</div>
-			<div className="social-container">
-				<div><FaMobileAlt /> &nbsp;<a href={phoneTxt} style={{ color: "black" }}>{props.phone}</a></div>
-				<div><FaWhatsapp /> &nbsp;{props.whatsappNo}</div>
-				<div> <FaMailBulk /> &nbsp;<a href={mail} style={{ color: "black" }}>{props.email}</a></div>
-				<div><FaMapMarkerAlt /> &nbsp;{props.address}</div>
-			</div>
-		</div>
+		</>
 	);
 }
 
