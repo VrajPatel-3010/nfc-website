@@ -45,7 +45,9 @@ const forgotPassword = (username, password, reTypePassword) => {
     })
 };
 
-
+const confirmTheme = (phone,themeId) => {
+  alert("https://www.example.com/"+phone+"/"+themeId);
+};
 
 const AuthService = {
   register,
@@ -53,6 +55,7 @@ const AuthService = {
   logout,
   getCurrentUser,
   forgotPassword,
+  confirmTheme,
 };
 
 export default AuthService;
