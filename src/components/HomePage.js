@@ -18,6 +18,9 @@ import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import $ from 'jquery';
 import DashboardLayout from '../layouts/dashboard';
 import LogoOnlyLayout from '../layouts/LogoOnlyLayout';
+import ContactUs from '../pages/ContactUs';
+
+
 // ----------------------------------------------------------------------
 
 export default function HomePage() {
@@ -82,7 +85,10 @@ export default function HomePage() {
           <Route path='portfolio3' element={<Portfolio3 />} /> {/*A nested route!*/}
           <Route path='portfolio4' element={<Portfolio4 />} /> {/*A nested route!*/}
           <Route path='portfolio5' element={<Portfolio5 />} /> {/*A nested route!*/}
+          <Route path='contactUs' element={<ContactUs />} /> {/*A nested route!*/}
         </Route>
+
+        
       </Routes>
 
     </>

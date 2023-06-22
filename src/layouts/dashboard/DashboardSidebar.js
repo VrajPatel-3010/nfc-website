@@ -106,9 +106,13 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
             </Typography>
           </Box>
 
-          <Button href="#" target="_blank" variant="contained">
+          {/* <Button to="../portfolio" onClick={navigateToContact} variant="contained">
             Contact us
+          </Button> */}
+          <Button to="/dashboard/contactUs" variant="contained" component={RouterLink}>
+                  Contact us
           </Button>
+
         </Stack>
       </Box>
     </Scrollbar>
