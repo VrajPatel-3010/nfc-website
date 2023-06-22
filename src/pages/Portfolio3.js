@@ -129,7 +129,7 @@ export default function Portfolio3() {
         </div>
       </section>
       <div className="text-center mt-5">
-        <a onClick={() => AuthService.confirmTheme(phone, 3)} className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1ja87p4-MuiButtonBase-root-MuiButton-root">
+      <a onClick={() => AuthService.confirmTheme(phone, 3)} className="confirmation-btn">
           <div className="cta">Confirm&nbsp;Theme</div>
         </a>
       </div>
