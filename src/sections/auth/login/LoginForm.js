@@ -62,7 +62,6 @@ export default function LoginForm() {
   } = methods;
 
   const onSubmit = async (data) => {
-    console.log(data.email)
     AuthService.login(data.email, data.password).then(
       (response) => {
         console.log(response)

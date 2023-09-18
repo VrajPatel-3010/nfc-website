@@ -85,7 +85,7 @@ function ProfileCard(props) {
 		<>
 			<div className="card-container">
 				<header>
-					<img src={"data:" + USERLIST.type + ";base64," + USERLIST.data} alt="ABC" />
+					<img src={"data:" + props.type + ";base64," + props.data} alt="ABC" />
 				</header>
 				<h1 className="bold-text">
 					{props.name} <span className="normal-text">{props.title}</span>
@@ -105,13 +105,13 @@ function ProfileCard(props) {
 					<div><FaMapMarkerAlt /> &nbsp;{props.address}</div>
 				</div>
 			</div>
-
-			<div className="text-center mt-5">
-
-				<a onClick={() => AuthService.confirmTheme(props.phone, 4)} className="confirmation-btn">
-					<div className="cta">Confirm&nbsp;Theme</div>
-				</a>
-			</div>
+			{!props.withoutLogin &&
+				<div className="text-center mt-5">
+					<a onClick={() => AuthService.confirmTheme(USERLIST.id, props.phone, 4)} className="confirmation-btn">
+						<div className="cta">Confirm&nbsp;Theme</div>
+					</a>
+				</div>
+			}
 		</>
 	);
 }

@@ -2,6 +2,9 @@ import React from "react";
 import Card from "./Card";
 import "../Service.css";
 import Service from "../components/Services";
+import CardPricing from "../components/CardPricing";
+import FAQs from "../components/FAQs";
+import FooterDeatils from "../components/FooterDetails";
 
 function Footer() {
   return (
@@ -9,15 +12,13 @@ function Footer() {
       <div id="footer">
 
         <Service />
-
-       
-        <div className="header-content mb-0 p-3" style={{ backgroundColor: "rgb(17, 24, 39)", color: "white" }}>
-          <p className="text-center">
-            Copyright © 2023 ABC HOME AUTOMATION LTD. All Rights Reserved.
-          </p>
+        <div>
+          <CardPricing />
+          <FAQs />
         </div>
-      </div>
-
+      <FooterDeatils />
+</div>
+        
     </>
   );
 }

@@ -5,8 +5,7 @@ import { useEffect } from 'react';
 import AuthService from "../services/auth.service";
 import '../Portfolio4.css';
 import service from "../services/service";
-import { Typewriter } from 'react-simple-typewriter'
-export default function Portfolio4() {
+export default function Portfolio4({ phoneNo, withoutLogin }) {
 
   // Get the contact information from the website 
   const downloadTxtFile = vcfText => {
@@ -27,12 +26,24 @@ export default function Portfolio4() {
   useEffect(() => {
     service.getIdList(loginId)
       .then(resp => {
-        console.log(resp.data[0]);
+        if (withoutLogin) {
+          service.dataListByPhoneNo(phoneNo)
+            .then(resp => {
+              console.log(resp.data[0]);
+              if (resp.data.length > 0) {
+                setUSERLIST(resp.data[0])
+                console.log(USERLIST);
+              }
+            })
+        }
+        else {
         if (resp.data.length > 0) {
           setUSERLIST(resp.data[0])
           console.log(USERLIST);
         }
+      }
       })
+    
   }, []);
 
   let mail = "mailto:" + USERLIST.email;
@@ -96,6 +107,7 @@ export default function Portfolio4() {
          whatsappNo={USERLIST.whatsappNo}
          email={USERLIST.email}
          address={USERLIST.address}
+         withoutLogin={withoutLogin}
         ></ProfileCard>
       </div>
     </div>

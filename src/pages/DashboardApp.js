@@ -28,12 +28,15 @@ import $ from 'jquery';
 
 export default function DashboardApp() {
   const theme = useTheme();
-
+  let baseUrl = window.location.origin;
   //Retrive Id
   const user = AuthService.getCurrentUser();
   let loginId = ""
   let username = ""
-  const [price, setPrice] = useState('asc');
+  const [price, setPrice] = useState('');
+  const [activeStatus, setActiveStatus] = useState(0)
+  const [themeId, setThemeId] = useState()
+  const [phoneNo, setPhoneNo] = useState()
 
   if (user) {
     loginId = user.id
@@ -44,13 +47,15 @@ export default function DashboardApp() {
       .then(resp => {
         if (resp.data.length > 0) {
           setPrice(resp.data[0].price + " $")
+          setActiveStatus(resp.data[0].activeStatus)
+          setThemeId(resp.data[0].themeId)
+          setPhoneNo(resp.data[0].phone)
         }
         else
           setPrice("0 $")
-
       })
   }, []);
-  console.log("Price :", price)
+  // console.log("Price :", price)
   return (
     <Page title="Dashboard">
       <Container maxWidth="xl">
@@ -59,17 +64,22 @@ export default function DashboardApp() {
         </Typography>
 
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary title="Current Plan" total={price} icon={'teenyicons:layers-intersect-solid'} ></AppWidgetSummary>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary title="Plan Expriy Date" total={"05-Jun-2024"} color="info" icon={'solar:calendar-linear'} />
           </Grid>
 
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary title="Remainig Days" total={9553} color="success" icon={'teenyicons:bag-alt-solid'} />
           </Grid>
+          {activeStatus == 2 && 
+          <Grid item xs={12} sm={6} md={3}>
+            <AppWidgetSummary title="Inactive" total={"Renew"} color="error" icon={'ant-design:bug-filled'} />
+          </Grid>
+          }
           {/* <Grid item xs={12} md={6} lg={8}>
             <AppNewsUpdate
               title="News Update"
@@ -85,11 +95,11 @@ export default function DashboardApp() {
 
           <Grid item xs={12} md={6} lg={8}>
             <AppOrderTimeline
-              title="Digital Card"
+              title="Portfolio URL"
               list={[...Array(2)].map((_, index) => ({
                 id: faker.datatype.uuid(),
                 title: [
-                  '29-May-2023',
+                  baseUrl +"/?themeId=" + themeId +"&phoneNo="+ phoneNo,
                   'Last Update on 25-May-2023',
                 ][index],
                 type: `order${index + 1}`,
@@ -98,7 +108,7 @@ export default function DashboardApp() {
             />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={6}>
+          {/* <Grid item xs={12} md={6} lg={6}>
             <AppCurrentSubject
               title="Current Language"
               chartLabels={['JavaScript', 'TypeScript', 'React JS', 'Spring Boot', 'Bootstrap', 'MySql']}
@@ -107,7 +117,7 @@ export default function DashboardApp() {
               ]}
               chartColors={[...Array(6)].map(() => theme.palette.text.secondary)}
             />
-          </Grid>
+          </Grid> */}
 
         </Grid>
       </Container>

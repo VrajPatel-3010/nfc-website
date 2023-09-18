@@ -5,8 +5,7 @@ import AuthService from "../services/auth.service";
 import '../Portfolio.css';
 import service from "../services/service";
 
-export default function Portfolio() {
-
+export default function Portfolio({phoneNo,withoutLogin}) {
   // Get the contact information from the website 
   const downloadTxtFile = vcfText => {
     const element = document.createElement("a");
@@ -24,7 +23,8 @@ export default function Portfolio() {
 
   const [USERLIST, setUSERLIST] = useState({});
   useEffect(() => {
-    service.getIdList(loginId)
+    if(withoutLogin){
+    service.dataListByPhoneNo(phoneNo)
       .then(resp => {
         console.log(resp.data[0]);
         if (resp.data.length > 0) {
@@ -32,6 +32,17 @@ export default function Portfolio() {
           console.log(USERLIST);
         }
       })
+    }
+    else{
+      service.getIdList(loginId)
+      .then(resp => {
+        console.log(resp.data[0]);
+        if (resp.data.length > 0) {
+          setUSERLIST(resp.data[0])
+          console.log(USERLIST);
+        }
+      })
+    }
   }, []);
 
   let mail = "mailto:" + USERLIST.email;
@@ -106,11 +117,13 @@ export default function Portfolio() {
           </a>
         </div>
       </div>
+      {!withoutLogin &&
       <div className="text-center">
-        <a onClick={() => AuthService.confirmTheme(phone, 1)} className="confirmation-btn">
+        <a onClick={() => AuthService.confirmTheme(USERLIST.id,phone, 1)} className="confirmation-btn">
           <div className="cta">Confirm&nbsp;Theme</div>
         </a>
       </div>
+      }
     </div>
   )
 };

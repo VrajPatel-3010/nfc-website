@@ -109,3 +109,127 @@ ul li a {
   background: #f6d365;
   background: linear-gradient(#f6d365,#fda085);
 }
+
+.hero_img,
+.price_icon > img {
+    display: block; /* Images are by default displayed inline - which causes the padding below the image. (because of line-height) */
+    max-height: 20vh;
+    min-width: 100%;
+}
+
+.content{
+    display: flex;
+    padding: 10% 12%;
+    text-align: center;
+    flex-direction: column;
+    background-color: white;
+    justify-content: space-around;
+    gap: 1.5rem;
+}
+
+.text_content p{
+    font-size: 1rem;
+    color: var(--desaturate-blue);
+    line-height: 1.6rem;
+}
+
+.text_content{
+    display: flex;
+    padding: 0 0.5rem;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.price_container,
+.price_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--very-pale-blue);
+    
+}
+
+.price_container{
+    padding: 7%;
+}
+
+.price_info{
+    gap: 0.5rem;
+}
+
+.price_change > a {
+    text-decoration: underline;
+}
+
+.price_box > p {
+    font-size: 1.05rem;
+    color: var(--desaturate-blue);
+    padding-top: 7%;
+}
+
+.price_icon > img{
+    max-width: 85%;
+}
+
+.paymentcontainer{
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: rgba(114, 128, 167, 0.09) 2px 2px 1px, rgba(114, 128, 167, 0.09) 2px 4px 2px, rgba(114, 128, 167, 0.09) 2px 8px 4px, rgba(114, 128, 167, 0.09) 2px 16px 8px, rgba(114, 128, 167, 0.09) 2px 32px 16px;
+  margin-left: 5%;
+}
+
+@media  screen and (max-width: 576px){  
+  .paymentcontainer{
+      max-width: 310px;
+      margin-left: 10%;
+  }
+  .paymentcontent{
+      padding: 10% 7%;
+  }
+
+  .price_box > p {
+      font-size: 0.8rem
+  }
+
+
+
+  .cancel_order{
+      font-size: 1rem;
+  }
+}
+
+table {
+  border-color: #ececec;
+  border-spacing: 0;
+  margin-bottom: 1em;
+  width: 100%;
+  color: #777;
+}
+
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.shop_table .order-total td, .shop_table .order-total th, .shop_table thead th {
+  border-width: 3px;
+}
+
+.shop_table td, th {
+  border-bottom: 1px solid #ececec;
+  font-size: .9em;
+  line-height: 1.3;
+  padding: 0.5em;
+  text-align: left;
+}

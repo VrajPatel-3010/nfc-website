@@ -8,7 +8,7 @@ import service from "../services/service";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 import { FaMapMarkerAlt, FaMobileAlt, FaMailBulk, FaWhatsapp } from "react-icons/fa";
 
-export default function Portfolio5() {
+export default function Portfolio5({phoneNo,withoutLogin}) {
 
   // Get the contact information from the website 
   const downloadTxtFile = vcfText => {
@@ -27,6 +27,17 @@ export default function Portfolio5() {
 
   const [USERLIST, setUSERLIST] = useState({});
   useEffect(() => {
+    if (withoutLogin) {
+      service.dataListByPhoneNo(phoneNo)
+        .then(resp => {
+          console.log(resp.data[0]);
+          if (resp.data.length > 0) {
+            setUSERLIST(resp.data[0])
+            console.log(USERLIST);
+          }
+        })
+    }
+    else{
     service.getIdList(loginId)
       .then(resp => {
         console.log(resp.data[0]);
@@ -35,6 +46,7 @@ export default function Portfolio5() {
           console.log(USERLIST);
         }
       })
+    }
   }, []);
 
   let mail = "mailto:" + USERLIST.email;
@@ -142,11 +154,13 @@ export default function Portfolio5() {
             </MDBRow>
           </MDBContainer>
         </div>
+        {!withoutLogin &&
         <div className="text-center mt-5">
-        <a onClick={() => AuthService.confirmTheme(phone, 5)} className="confirmation-btn">
+        <a onClick={() => AuthService.confirmTheme(USERLIST.id,phone, 5)} className="confirmation-btn">
 					<div className="cta">Confirm&nbsp;Theme</div>
 				</a>
 			</div>
+        }
       </div>
     </div>
   )

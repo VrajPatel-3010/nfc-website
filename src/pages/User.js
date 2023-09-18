@@ -75,12 +75,21 @@ export default function User() {
   const user = AuthService.getCurrentUser();
   let loginId = 0
   let admin = false
-  console.log(user)
+  let teamLead = false
+  let teamMember = false
+
   if (user) {
     loginId = user.id;
     if (user.roles[0] == "ROLE_ADMIN") {
       admin = true
     }
+    if (user.roles[0] == "ROLE_TEAM_LEAD") {
+      teamLead = true
+    }
+    if (user.roles[0] == "ROLE_MODERATOR") {
+      teamMember = true
+    }
+    
   }
 
 
@@ -95,8 +104,9 @@ export default function User() {
     TABLE_HEAD.push({ id: 'price', label: 'Price', alignRight: false },)
     TABLE_HEAD.push({ id: 'activeStatus', label: 'Status', alignRight: false },)
   }
+  if(!teamMember){
   TABLE_HEAD.push({ id: '' },)
-
+  }
 
   // if (state.state != null && state.state.response != null && state.state.response.id != null) {
   //   loginId = state.state.response.id;
@@ -130,6 +140,14 @@ export default function User() {
             setUSERLIST(resp.data)
           }
         })
+    }
+    else if(teamLead){
+      service.getAllTeamMember(loginId)
+      .then(resp => {
+        if (resp.data.length > 0) {
+          setUSERLIST(resp.data)
+        }
+      })
     }
     else {
       service.getIdList(loginId)
@@ -255,10 +273,8 @@ export default function User() {
                         <TableCell align="left">{org}</TableCell>
                         <TableCell align="left">{email}</TableCell>
                         {admin && <TableCell align="left">$ {price}</TableCell>}
-                        {admin && <TableCell >{activeStatus == 1 ? <div
-                          className="p-2 alert-success">Active</div> : <div
-                            className="p-2 alert-danger">Inactive</div>}</TableCell>}
-
+                        {admin && <TableCell >{activeStatus == 1 ? <Label variant="ghost" color='success'>Active</Label> : <Label variant="ghost" color='error'>Inactive</Label>}</TableCell>}
+                        {!teamMember &&
                         <TableCell align="right">
                           {/* <UserMoreMenu /> */}
                           <TableCell align="right">
@@ -270,6 +286,7 @@ export default function User() {
                             </IconButton>
                           </TableCell>
                         </TableCell>
+                        }
                       </TableRow>
                     );
                   })}

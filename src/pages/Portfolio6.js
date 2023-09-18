@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { FaMapMarkerAlt, FaMobileAlt, FaMailBulk, FaWhatsapp } from "react-icons/fa";
 import { useEffect } from 'react';
 import AuthService from "../services/auth.service";
-import '../Portfolio2.css';
+import '../Portfolio6.css';
 import service from "../services/service";
-
-export default function Portfolio({ phoneNo, withoutLogin }) {
+export default function Portfolio6({ phoneNo, withoutLogin }) {
 
   // Get the contact information from the website 
   const downloadTxtFile = vcfText => {
@@ -59,7 +57,7 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
   let title = USERLIST.title;
   let org = USERLIST.org;
   let url = USERLIST.url;
-
+  let fullname = firstName + " " + lastName
   const CreateVCard = () => {
     let vCard = 'BEGIN:VCARD\n' +
       'VERSION:4.0\n' +
@@ -92,59 +90,57 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
   };
 
   return (
-    <>
-      <div className="theme2">
-        <div className="Info">
-          <img src={"data:" + USERLIST.type + ";base64," + USERLIST.data} alt="illustration" className="--info-image" />
-          <h1>{USERLIST.firstName}&nbsp;{USERLIST.lastName}</h1>
-          <h2>{USERLIST.title}</h2>
-          <p>
-            <a
-              rel="noreferrer"
-              className="--info-portfolio">
-              {USERLIST.info}
+    <div className="theme6">
+      <div className="card6">
+        <div className="header__container">
+          <img src={"data:" + USERLIST.type + ";base64," + USERLIST.data} alt="illustration" className="header__img" />
+        </div>
+        <div className="main__container">
+          <h1 className="main__heading">{fullname}</h1>
+          <h3 className="main__profession">{title}</h3>
+          <a
+            href={url}
+            className="main__link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {url}
+          </a>
+          <div className="main__button-wrapper">
+            <a href={`mailto:${email}`} target="_blank" rel="noreferrer">
+              <button className="btn-reset btn6 btn__email">
+                <img src="/static/icons/mail-icon.svg" alt="email" />
+                Email
+              </button>
             </a>
-          </p>
-          <div className="--info-buttons">
-            <button className="--info-email">
-              <a href={mail} style={{ color: "black" }}><i class="fa-solid fa-envelope"></i> EMAIL
-              </a>
-            </button>
-            <button className="--info-linkedin">
-              <a onClick={() => downloadTxtFile(CreateVCard())}>
-                <div>SAVE&nbsp;CONTACT</div>
-              </a>
-            </button>
+            <a onClick={() => downloadTxtFile(CreateVCard())} rel="noreferrer"><button class="btn-reset btn6 btn__hh"><img src="/static/icons/download.svg" width="17px"></img>Save Contact</button></a>
+          </div>
+          <div className="main__content">
+            <h2 className="content__title">About</h2>
+            <p className="content__descr">{USERLIST.title}</p>
+            <p className="content__descr">{USERLIST.info}</p>
+
+            {/* <h2 className="content__title">Interests</h2>
+        <p className="content__descr">{props.interests}</p> */}
           </div>
         </div>
-        <div className="About">
-          <h2></h2>
-          <div><FaMobileAlt /> <a href={phoneTxt} style={{ color: "white" }}>{USERLIST.phone}</a></div>
-          <div><FaWhatsapp /> {USERLIST.whatsappNo}</div>
-          <div><FaMailBulk /> <a href={mail} style={{ color: "white" }}>{USERLIST.email}</a></div>
-          <div><FaMapMarkerAlt /> {USERLIST.address}</div>
-        </div>
-        <div className="Footer">
-          <ul>
-            <li className="twitter">
-              <a
-                href="https://twitter.com/sexy_gravy"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i class="fa-brands fa-square-twitter"></i>
+        <div className="footer__container">
+          <ul className="list-reset footer__list">
+            <li className="footer__item">
+              <a aria-label="instagram">
+                <img src="/static/icons/instagram-icon.svg" className="footer__img" />
               </a>
             </li>
           </ul>
         </div>
+        {!withoutLogin &&
+          <div className="text-center mt-5">
+            <a onClick={() => AuthService.confirmTheme(USERLIST.id, phone, 5)} className="confirmation-btn">
+              <div className="cta">Confirm&nbsp;Theme</div>
+            </a>
+          </div>
+        }
       </div>
-      {!withoutLogin &&
-        <div className="text-center">
-          <a onClick={() => AuthService.confirmTheme(USERLIST.id, phone, 2)} className="confirmation-btn">
-            <div className="cta">Confirm&nbsp;Theme</div>
-          </a>
-        </div>
-      }
-    </>
+    </div>
   )
 };

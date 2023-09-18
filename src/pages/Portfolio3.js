@@ -7,7 +7,7 @@ import AuthService from "../services/auth.service";
 import '../Portfolio3.css';
 import service from "../services/service";
 import { Typewriter } from 'react-simple-typewriter'
-export default function Portfolio3() {
+export default function Portfolio3({ phoneNo, withoutLogin }) {
 
   // Get the contact information from the website 
   const downloadTxtFile = vcfText => {
@@ -26,14 +26,26 @@ export default function Portfolio3() {
 
   const [USERLIST, setUSERLIST] = useState({});
   useEffect(() => {
-    service.getIdList(loginId)
-      .then(resp => {
-        console.log(resp.data[0]);
-        if (resp.data.length > 0) {
-          setUSERLIST(resp.data[0])
-          console.log(USERLIST);
-        }
-      })
+    if (withoutLogin) {
+      service.dataListByPhoneNo(phoneNo)
+        .then(resp => {
+          console.log(resp.data[0]);
+          if (resp.data.length > 0) {
+            setUSERLIST(resp.data[0])
+            console.log(USERLIST);
+          }
+        })
+    }
+    else {
+      service.getIdList(loginId)
+        .then(resp => {
+          console.log(resp.data[0]);
+          if (resp.data.length > 0) {
+            setUSERLIST(resp.data[0])
+            console.log(USERLIST);
+          }
+        })
+    }
   }, []);
 
   let mail = "mailto:" + USERLIST.email;
@@ -128,11 +140,13 @@ export default function Portfolio3() {
           </div>
         </div>
       </section>
-      <div className="text-center mt-5">
-      <a onClick={() => AuthService.confirmTheme(phone, 3)} className="confirmation-btn">
-          <div className="cta">Confirm&nbsp;Theme</div>
-        </a>
-      </div>
+      {!withoutLogin &&
+        <div className="text-center mt-5">
+          <a onClick={() => AuthService.confirmTheme(USERLIST.id, phone, 3)} className="confirmation-btn">
+            <div className="cta">Confirm&nbsp;Theme</div>
+          </a>
+        </div>
+      }
     </div>
   )
 };

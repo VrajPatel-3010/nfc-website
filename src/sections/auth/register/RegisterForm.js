@@ -25,6 +25,7 @@ export default function RegisterForm() {
   let formId = "";
   let admin = false
   const [isUpdate, setIsUpdate] = useState(false)
+  const [activeStatus, setActiveStatus] = useState(0)
 
   if (id.state != null && id.state.id != null) {
     formId = id.state.id
@@ -75,6 +76,7 @@ export default function RegisterForm() {
     attachment: '',
     loginId: loginId,
     price: '',
+    activeStatus: 0,
   };
   const methods = useForm({
     resolver: yupResolver(RegisterSchema),
@@ -107,7 +109,12 @@ export default function RegisterForm() {
             url: resp.data.url,
             loginId: resp.data.loginId,
             price: resp.data.price,
+            activeStatus: resp.data.activeStatus,
           }))
+
+          if (resp.data.activeStatus != null) {
+            setActiveStatus(resp.data.activeStatus);
+          }
         })
     }
   }, []);
@@ -192,14 +199,19 @@ export default function RegisterForm() {
   };
 
   const inactiveUser = (data) => {
-    console.log(data)
-    const confirmBox = window.confirm("Are you sure you want to inactive user ?")
+    let status = 0
+    const confirmBox = window.confirm("Are you sure you want to Active/Inactive user ?")
     if (confirmBox === true) {
       setMessage("");
       setLoading(true);
-      service.inactiveUser(formId)
+      if (activeStatus == parseInt(1)) {
+        status = 2
+      }
+      else if (activeStatus == parseInt(2)) {
+        status = 1
+      }
+      service.inactiveUser(formId, status)
         .then(response => {
-          console.log(response.data);
           setMessage("Inactive successfully !");
           setSuccessful(true);
           setLoading(false);
@@ -289,7 +301,7 @@ export default function RegisterForm() {
                 Update Price
               </LoadingButton>
               <LoadingButton fullWidth size="medium" onClick={inactiveUser} variant="contained" loading={isSubmitting}>
-                Inactive
+                {activeStatus == 1 ? "Inactive" : "Active"}
               </LoadingButton>
             </>
           }

@@ -91,7 +91,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
       <Box sx={{ px: 2.5, pb: 3, mt: 0 }}>
         <Stack alignItems="center" spacing={3} sx={{ pt: 3, borderRadius: 2, position: 'relative' }}>
-            {/* <Box
+          {/* <Box
               component="img"
               src=""
               sx={{ width: 100, position: 'absolute', top: -50 }}
@@ -101,17 +101,18 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
             <Typography gutterBottom variant="h6">
               Have some Questions?
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            {/* <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               Reach out to us<br></br>
-            </Typography>
+            </Typography> */}
+            <Button to="/dashboard/contactUs" variant="contained" component={RouterLink}>
+              Contact us
+            </Button>
           </Box>
 
           {/* <Button to="../portfolio" onClick={navigateToContact} variant="contained">
             Contact us
           </Button> */}
-          <Button to="/dashboard/contactUs" variant="contained" component={RouterLink}>
-                  Contact us
-          </Button>
+
 
         </Stack>
       </Box>

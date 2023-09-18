@@ -12,7 +12,9 @@ import Portfolio2 from '../pages/Portfolio2';
 import Portfolio3 from '../pages/Portfolio3';
 import Portfolio4 from '../pages/Portfolio4';
 import Portfolio5 from '../pages/Portfolio5';
+import Portfolio6 from '../pages/Portfolio6';
 import PaymentPage from '../pages/PaymentPage';
+import CardType from '../pages/CardType';
 
 import Products from '../pages/Products';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
@@ -65,7 +67,6 @@ export default function HomePage() {
               <br></br>
               <br></br>
               Compatible with all modern smartphones, Apple and Android.
-
             </p>
           </div>
         </div>
@@ -86,8 +87,10 @@ export default function HomePage() {
           <Route path='portfolio3' element={<Portfolio3 />} /> {/*A nested route!*/}
           <Route path='portfolio4' element={<Portfolio4 />} /> {/*A nested route!*/}
           <Route path='portfolio5' element={<Portfolio5 />} /> {/*A nested route!*/}
+          <Route path='portfolio6' element={<Portfolio6 />} /> {/*A nested route!*/}
           <Route path='contactUs' element={<ContactUs />} /> {/*A nested route!*/}
           <Route path='paymentPage' element={<PaymentPage />} /> {/*A nested route!*/}
+          <Route path='CardType' element={<CardType />} /> {/*A nested route!*/}
         </Route>
 
         

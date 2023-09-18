@@ -12,7 +12,7 @@ import Logo from '../components/Logo';
 // sections
 import { LoginForm } from '../sections/auth/login';
 import AuthSocial from '../sections/auth/AuthSocial';
-import { Route,Routes } from 'react-router-dom';
+import { Route,Routes,useNavigate } from 'react-router-dom';
 import Register from '../pages/Register';
 import $ from 'jquery';
 
@@ -62,6 +62,13 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Login() {
+  const navigate = useNavigate();
+
+  window.addEventListener('popstate', () => {
+    //console.log('User clicked back button');
+    window.location.reload();
+  });
+
   const smUp = useResponsive('up', 'sm');
 
   const mdUp = useResponsive('up', 'md');
@@ -88,7 +95,7 @@ export default function Login() {
         {mdUp && (
           <SectionStyle>
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-              Hi, Welcome Back
+              {/* Hi, Welcome Back */}
             </Typography>
             <img src="/static/illustrations/illustration_login.png" alt="login" />
           </SectionStyle>
