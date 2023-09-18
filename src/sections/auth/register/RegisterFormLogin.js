@@ -9,7 +9,7 @@ import { Stack, IconButton, InputAdornment } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // components
 import Iconify from '../../../components/Iconify';
-import { FormProvider, RHFTextField } from '../../../components/hook-form';
+import { FormProvider, RHFTextField, RHFCheckbox } from '../../../components/hook-form';
 import AuthService from "../../../services/auth.service";
 
 // ----------------------------------------------------------------------
@@ -26,6 +26,9 @@ export default function RegisterFormLogin() {
     lastName: Yup.string().required('Last name required'),
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
     password: Yup.string().required('Password is required'),
+    //individual: Yup.string().required('Either Individual or Team required'),
+    //team: Yup.boolean('Either Individual or Team required').required('Either Individual or Team required'),
+    //individual: Yup.boolean('Select this checkbox please'),    
   });
 
   const defaultValues = {
@@ -33,6 +36,8 @@ export default function RegisterFormLogin() {
     lastName: '',
     email: '',
     password: '',
+    individual:false,
+    team:false,
   };
 
   const methods = useForm({
@@ -47,11 +52,21 @@ export default function RegisterFormLogin() {
 
   const onSubmit = async (data) => {
     console.log(data)
+    if(!(data.individual || data.team)){
+      alert("Either Individual or Team required");
+      return false;
+    }
+
+    if(data.individual && data.team){
+      alert("Either Individual or Team required");
+      return false;
+    }
+   
     AuthService.register(data).then((response) => {
-        setLoading(false);
-        setMessage(response.message);
-        navigate('/Login', { replace: true });
-      },
+      setLoading(false);
+      setMessage(response.message);
+      navigate('/Login', { replace: true });
+    },
       (error) => {
         const resMessage =
           (error.response &&
@@ -89,6 +104,11 @@ export default function RegisterFormLogin() {
             ),
           }}
         />
+        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} style={{alignItems:"baseline"}}>
+          <RHFCheckbox name="individual" label="Individual"/>
+          <RHFCheckbox name="team" label="Team" />
+        </Stack>
+
 
         <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
           Register
@@ -97,12 +117,12 @@ export default function RegisterFormLogin() {
 
       <br></br> <br></br>
       {message && (
-            <div className="form-group">
-              <div className="alert alert-danger" role="alert">
-                {message}
-              </div>
-            </div>
-          )}
+        <div className="form-group">
+          <div className="alert alert-danger" role="alert">
+            {message}
+          </div>
+        </div>
+      )}
     </FormProvider>
   );
 }

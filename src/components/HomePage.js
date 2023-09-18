@@ -12,6 +12,7 @@ import Portfolio2 from '../pages/Portfolio2';
 import Portfolio3 from '../pages/Portfolio3';
 import Portfolio4 from '../pages/Portfolio4';
 import Portfolio5 from '../pages/Portfolio5';
+import PaymentPage from '../pages/PaymentPage';
 
 import Products from '../pages/Products';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
@@ -86,6 +87,7 @@ export default function HomePage() {
           <Route path='portfolio4' element={<Portfolio4 />} /> {/*A nested route!*/}
           <Route path='portfolio5' element={<Portfolio5 />} /> {/*A nested route!*/}
           <Route path='contactUs' element={<ContactUs />} /> {/*A nested route!*/}
+          <Route path='paymentPage' element={<PaymentPage />} /> {/*A nested route!*/}
         </Route>
 
         

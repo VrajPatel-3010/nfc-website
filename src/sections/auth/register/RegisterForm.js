@@ -23,6 +23,7 @@ export default function RegisterForm() {
 
   const id = useLocation();
   let formId = "";
+  let admin = false
   const [isUpdate, setIsUpdate] = useState(false)
 
   if (id.state != null && id.state.id != null) {
@@ -33,23 +34,31 @@ export default function RegisterForm() {
   let loginId = 0
   if (user) {
     loginId = user.id;
+    if (user.roles[0] == "ROLE_ADMIN") {
+      admin = true
+    }
   }
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [successful, setSuccessful] = useState(false)
 
-  const RegisterSchema = Yup.object().shape({
-    firstName: Yup.string().required('First name required'),
-    lastName: Yup.string().required('Last name required'),
-    email: Yup.string().email('Email must be a valid email address').required('Email is required'),
-    phone: Yup.string().required('Phone no required'),
-    address: Yup.string().required('Address required'),
-    title: Yup.string().required('Title'),
-    org: Yup.string().required('Organization required'),
-    whatsappNo: Yup.string().required('Whatsapp Number required'),
-    info: Yup.string().required('About us required'),
-  });
+  const RegisterSchema = Yup.object().shape(
+    !admin &&
+    {
+      firstName: Yup.string().required('First name required'),
+      lastName: Yup.string().required('Last name required'),
+      email: Yup.string().email('Email must be a valid email address').required('Email is required'),
+      phone: Yup.string().required('Phone no required'),
+      address: Yup.string().required('Address required'),
+      title: Yup.string().required('Title'),
+      org: Yup.string().required('Organization required'),
+      whatsappNo: Yup.string().required('Whatsapp Number required'),
+      info: Yup.string().required('About us required'),
+    }
+
+  );
 
   const defaultValues = {
     firstName: '',
@@ -65,6 +74,7 @@ export default function RegisterForm() {
     url: '',
     attachment: '',
     loginId: loginId,
+    price: '',
   };
   const methods = useForm({
     resolver: yupResolver(RegisterSchema),
@@ -96,12 +106,12 @@ export default function RegisterForm() {
             whatsappNo: resp.data.whatsappNo,
             url: resp.data.url,
             loginId: resp.data.loginId,
+            price: resp.data.price,
           }))
         })
     }
   }, []);
   const onSubmit = (data) => {
-    console.log(data)
     setMessage("");
     setLoading(true);
     const formData = new FormData();
@@ -109,7 +119,7 @@ export default function RegisterForm() {
     for (let key in data) {
       formData.append(key, data[key])
     }
-    if (isUpdate) {
+    if (!admin && isUpdate) {
       service.update(formId, formData)
         .then(response => {
           console.log(response.data);
@@ -122,6 +132,26 @@ export default function RegisterForm() {
           setMessage("Issue in Data Updation ! ");
           setLoading(false);
         });
+    }
+    else if (admin) {
+      const confirmBox = window.confirm("Are you sure you want to update price ?")
+      if (confirmBox === true) {
+        setMessage("");
+        setLoading(true);
+        service.updatePrice(formId, data.price)
+          .then(response => {
+            console.log(response.data);
+            setMessage("Price updated successfully !");
+            setSuccessful(true);
+            setLoading(false);
+            navigate('/dashboard/User', { replace: true });
+          })
+          .catch(e => {
+            console.log(e);
+            setMessage("Issue in price updation ! ");
+            setLoading(false);
+          });
+      }
     }
     else {
       service.create(formData)
@@ -143,9 +173,9 @@ export default function RegisterForm() {
     console.log(data)
     const confirmBox = window.confirm("Are you sure you want to delete details ?")
     if (confirmBox === true) {
-    setMessage("");
-    setLoading(true);
-    service.delete(formId)
+      setMessage("");
+      setLoading(true);
+      service.delete(formId)
         .then(response => {
           console.log(response.data);
           setMessage("Data Deleted successfully !");
@@ -158,13 +188,37 @@ export default function RegisterForm() {
           setMessage("Issue in Data Delete ! ");
           setLoading(false);
         });
-      }
+    }
   };
+
+  const inactiveUser = (data) => {
+    console.log(data)
+    const confirmBox = window.confirm("Are you sure you want to inactive user ?")
+    if (confirmBox === true) {
+      setMessage("");
+      setLoading(true);
+      service.inactiveUser(formId)
+        .then(response => {
+          console.log(response.data);
+          setMessage("Inactive successfully !");
+          setSuccessful(true);
+          setLoading(false);
+          navigate('/dashboard/User', { replace: true });
+        })
+        .catch(e => {
+          console.log(e);
+          setMessage("Issue in Inactive ! ");
+          setLoading(false);
+        });
+    }
+  };
+
+
 
   return (
     <>
-     <Typography variant="h4" sx={{ mb: 5 }}>
-     {isUpdate ? "Edit Details" : "Register Details"}
+      <Typography variant="h4" sx={{ mb: 5 }}>
+        {isUpdate ? "Edit Details" : "Register Details"}
       </Typography>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)} ref={form}>
         <Stack spacing={3}>
@@ -174,14 +228,21 @@ export default function RegisterForm() {
           </Stack>
           <label htmlFor="img">Profile Image</label>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-            <input
+            {admin ? <input
+              type="file"
+              className="form-control"
+              id="attachment"
+              name="attachment"
+              onChange={(e) => setSelectedFile(e.target.files[0])}
+            /> : <input
               type="file"
               className="form-control"
               id="attachment"
               required
               name="attachment"
               onChange={(e) => setSelectedFile(e.target.files[0])}
-            />
+            />}
+
           </Stack>
 
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
@@ -189,7 +250,7 @@ export default function RegisterForm() {
             <RHFTextField name="org" label="Organization" />
           </Stack>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-            <RHFTextField name="info" label="About us"/>
+            <RHFTextField name="info" label="About us" />
           </Stack>
 
           <Typography variant="h4" gutterBottom>
@@ -216,20 +277,36 @@ export default function RegisterForm() {
             <Iconify icon="mdi:location" color="#DF3E30" width={40} height={50} />
             <RHFTextField name="address" label="Address" />
           </Stack>
-          {isUpdate ? <>
 
+          {admin &&
+            <>
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+                <Iconify icon="ic:baseline-price-change" color="#DF3E30" width={40} height={50} />
+                <RHFTextField name="price" label="Price" />
+              </Stack>
+
+              <LoadingButton fullWidth size="medium" type="submit" variant="contained" loading={isSubmitting}>
+                Update Price
+              </LoadingButton>
+              <LoadingButton fullWidth size="medium" onClick={inactiveUser} variant="contained" loading={isSubmitting}>
+                Inactive
+              </LoadingButton>
+            </>
+          }
+          {!admin && isUpdate && <>
             <LoadingButton fullWidth size="medium" type="submit" variant="contained" loading={isSubmitting}>
-              Update         
+              Update
             </LoadingButton>
             <LoadingButton fullWidth size="medium" onClick={deleteEntry} variant="contained" loading={isSubmitting}>
               Delete
             </LoadingButton>
-          </> :
+          </>
+          }
+
+          {!admin && !isUpdate &&
             <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
-              Register          </LoadingButton>
-
-
-
+              Register
+            </LoadingButton>
           }
 
         </Stack>

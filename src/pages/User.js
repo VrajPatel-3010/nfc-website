@@ -38,13 +38,6 @@ import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashbo
 // ----------------------------------------------------------------------
 import service from "../services/service";
 
-const TABLE_HEAD = [
-  { id: 'title', label: 'Title', alignRight: false },
-  { id: 'firstname', label: 'Name', alignRight: false },
-  { id: 'org', label: 'Company', alignRight: false },
-  { id: 'email', label: 'E-mail', alignRight: false },
-  { id: '' },
-];
 
 // ----------------------------------------------------------------------
 
@@ -81,9 +74,30 @@ export default function User() {
   const navigate = useNavigate();
   const user = AuthService.getCurrentUser();
   let loginId = 0
+  let admin = false
+  console.log(user)
   if (user) {
     loginId = user.id;
+    if (user.roles[0] == "ROLE_ADMIN") {
+      admin = true
+    }
   }
+
+
+  const TABLE_HEAD = []
+  TABLE_HEAD.push({ id: 'title', label: 'Title', alignRight: false },
+    { id: 'firstname', label: 'Name', alignRight: false },
+    { id: 'org', label: 'Company', alignRight: false },
+    { id: 'email', label: 'E-mail', alignRight: false },
+  );
+
+  if (admin) {
+    TABLE_HEAD.push({ id: 'price', label: 'Price', alignRight: false },)
+    TABLE_HEAD.push({ id: 'activeStatus', label: 'Status', alignRight: false },)
+  }
+  TABLE_HEAD.push({ id: '' },)
+
+
   // if (state.state != null && state.state.response != null && state.state.response.id != null) {
   //   loginId = state.state.response.id;
   //   console.log("Login Id",loginId)
@@ -109,12 +123,22 @@ export default function User() {
   };
   const [USERLIST, setUSERLIST] = useState([]);
   useEffect(() => {
-    service.getIdList(loginId)
-      .then(resp => {
-        if(resp.data.length > 0){
-        setUSERLIST(resp.data)
-        }
-      })
+    if (admin) {
+      service.getAll()
+        .then(resp => {
+          if (resp.data.length > 0) {
+            setUSERLIST(resp.data)
+          }
+        })
+    }
+    else {
+      service.getIdList(loginId)
+        .then(resp => {
+          if (resp.data.length > 0) {
+            setUSERLIST(resp.data)
+          }
+        })
+    }
   }, []);
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
@@ -206,7 +230,9 @@ export default function User() {
                 />
                 <TableBody>
                   {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, title, data, type, firstName, org, email } = row;
+                    let { id, title, data, type, firstName, org, email, price, activeStatus } = row
+                    { admin ? { id, title, data, type, firstName, org, email, price, activeStatus } = row : { id, title, data, type, firstName, org, email } = row }
+
                     const isItemSelected = selected.indexOf(firstName) !== -1;
 
                     return (
@@ -228,6 +254,11 @@ export default function User() {
                         <TableCell align="left">{firstName}</TableCell>
                         <TableCell align="left">{org}</TableCell>
                         <TableCell align="left">{email}</TableCell>
+                        {admin && <TableCell align="left">$ {price}</TableCell>}
+                        {admin && <TableCell >{activeStatus == 1 ? <div
+                          className="p-2 alert-success">Active</div> : <div
+                            className="p-2 alert-danger">Inactive</div>}</TableCell>}
+
                         <TableCell align="right">
                           {/* <UserMoreMenu /> */}
                           <TableCell align="right">

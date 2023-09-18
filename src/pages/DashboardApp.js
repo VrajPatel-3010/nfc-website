@@ -6,6 +6,7 @@ import { Grid, Container, Typography } from '@mui/material';
 import Page from '../components/Page';
 import Iconify from '../components/Iconify';
 import AuthService from "../services/auth.service";
+import service from "../services/service";
 
 // sections
 import {
@@ -19,7 +20,7 @@ import {
   AppCurrentSubject,
   AppConversionRates,
 } from '../sections/@dashboard/app';
-import {useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import $ from 'jquery';
 
@@ -31,11 +32,25 @@ export default function DashboardApp() {
   //Retrive Id
   const user = AuthService.getCurrentUser();
   let loginId = ""
-  let username =""  
-  if(user){
+  let username = ""
+  const [price, setPrice] = useState('asc');
+
+  if (user) {
     loginId = user.id
-    username= user.username
+    username = user.username
   }
+  useEffect(() => {
+    service.getIdList(loginId)
+      .then(resp => {
+        if (resp.data.length > 0) {
+          setPrice(resp.data[0].price + " $")
+        }
+        else
+          setPrice("0 $")
+
+      })
+  }, []);
+  console.log("Price :", price)
   return (
     <Page title="Dashboard">
       <Container maxWidth="xl">
@@ -45,7 +60,7 @@ export default function DashboardApp() {
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={4}>
-            <AppWidgetSummary title="Current Plan" total={"20$"} icon={'teenyicons:layers-intersect-solid'} ></AppWidgetSummary>
+            <AppWidgetSummary title="Current Plan" total={price} icon={'teenyicons:layers-intersect-solid'} ></AppWidgetSummary>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
@@ -55,12 +70,6 @@ export default function DashboardApp() {
           <Grid item xs={12} sm={6} md={4}>
             <AppWidgetSummary title="Remainig Days" total={9553} color="success" icon={'teenyicons:bag-alt-solid'} />
           </Grid>
-
-
-
-
-
-
           {/* <Grid item xs={12} md={6} lg={8}>
             <AppNewsUpdate
               title="News Update"

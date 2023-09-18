@@ -1,0 +1,45 @@
+  .service-item{
+    padding: 35px 25px;
+    background-color: #ffff;
+    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, .05);
+    text-align: center;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .service-item h4{
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+  
+  .service-item-logo{
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .service-item-logo img{
+    width: 44px;
+    height: 44px;
+  }
+  
+  .logo-count-1,.logo-count-4 {
+    background: #9c19c9;
+  }
+  
+  .logo-count-2,.logo-count-5 {
+    background: #ffaf00;
+  }
+  
+  .logo-count-3,.logo-count-6 {
+    background: #ff4e6e;
+  }
+
+.react-multiple-carousel__arrow{
+  display: none;
+}
+
