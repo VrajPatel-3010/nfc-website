@@ -141,9 +141,9 @@ function FooterDetails() {
                 <li>
                   <a className="cwaev c3bg1 ctlbf ci96u cpmmw" href="https://www.linkedin.com/in/digi-id-hub">Linkedin</a>
                 </li>
-                <li>
-                  {/* <a className="cwaev c3bg1 ctlbf ci96u cpmmw" href="#0">Twitter</a> */}
-                </li>
+                {/* <li>
+                  <a className="cwaev c3bg1 ctlbf ci96u cpmmw" href="#0">Twitter</a>
+                </li> */}
                 <li>
                   <a className="cwaev c3bg1 ctlbf ci96u cpmmw" href="https://www.instagram.com/digiidhub/">Instagram</a>
                 </li>
