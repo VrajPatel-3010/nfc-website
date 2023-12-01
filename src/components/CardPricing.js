@@ -22,7 +22,7 @@ function CardPricing() {
               <div className="cvznp cj9l2 ch13c ciev1 c9me5 c8afs">
                 {/* Section header */}
                 <div className="czied cie5d csrf8 aos-init aos-animate" data-aos="fade-up">
-                  <h2 className="cfni9 czebt cvg4m">How DIGIDHUB Card Works?</h2>
+                  <h2 className="cfni9 czebt cvg4m">How DIGIIDHUB Card Works?</h2>
                   {/* <p className="cw46s c1yzh cz0di">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> */}
                 </div>
                 {/* Image */}
@@ -131,14 +131,14 @@ function CardPricing() {
                         {/* Card #1 */}
                         <div className="swiper-slide c99rw c6ekv cj7ct cszdf c90zz swiper-slide-prev" role="group" aria-label="1 / 2" style={{ opacity: 1, transform: 'translate3d(0px, 0px, 0px)', transitionDuration: '0ms' }}>
                           <div className="ctm2i cb6xh ccfr6 cskbp ciev1">
-                            <img src="./static/illustrations/testimonial-01.jpg" className="cvznp" width={384} height={180} alt="Testiomonial 01" />
+                            <img src="./static/5.jpg" className="cvznp" width={384} height={180} alt="Testiomonial 01" />
                           </div>
                           <div className="cppns c5m09 cy3ez ciev1 cj7ct cz3eq c90zz cclc4 cecyf">
                             {/* <img className="cnvwf cat50 cw4j8" src="./static/illustrations/testimonial-01.jpg" width={150} height={71} alt="Testiomonial sign 01" /> */}
-                            <p className="cwqik cuy1u czebt cclc4">“ This card is awesome. The app lets me link foreign cards with a new one which makes everything 100 times easier. Like Apple Pay, online shopping without useless phone confirmation. I wish I knew this earlier. ”</p>
-                            <div className="crs7v cuy1u cflrl">
+                            <p className="cwqik cuy1u czebt cclc4">“ Share your contact info with just a tap! NFC cards make exchanging numbers and emails as easy as a handshake. Say goodbye to typing and hello to quick, effortless sharing ”</p>
+                            {/* <div className="crs7v cuy1u cflrl">
                               <span className="cwqik">Elisa Koeppel</span> - <span className="c3bg1">CEO &amp; Co-Founder</span>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                         {/* Card #2
@@ -184,7 +184,7 @@ function CardPricing() {
                 {/* Section header */}
                 <div className="czied cie5d csrf8 aos-init aos-animate" data-aos="fade-up">
                   <h2 className="czebt cvg4m">Get the only custom digital card you'll ever need</h2>
-                  <p className="crs7v c1yzh cz0di">Our innovative solution revolutionizes the way you exchange contact information and make lasting connections. With DIGIDHUB Card, you can leave traditional paper business cards behind and embrace a modern, eco-friendly approach to networking.</p>
+                  <p className="crs7v c1yzh cz0di">Our innovative solution revolutionizes the way you exchange contact information and make lasting connections. With DIGIIDHUB Card, you can leave traditional paper business cards behind and embrace a modern, eco-friendly approach to networking.</p>
                 </div>
                 {/* Pricing tables */}
                 <div className="cji5s cry79 c5xjq cysxe c1nxv cgzxz cmzle c8afs c5py1 c1ymh aos-init aos-animate" data-aos="fade-up" data-aos-delay={100}>
@@ -192,7 +192,7 @@ function CardPricing() {
                   <div className="cl239 ciev1 cj7ct c1gk0 c90zz c6d4u clzpq">
                     <div className="czebt">
                       <div className="ch13c cuj67 c1yzh cuowh">PVC Card</div>
-                      <img className="ccryv cn7sg" src="./static/illustrations/demo_card.png" width={210} height={124} alt="Starter" />
+                      <img className="ccryv cn7sg" src="./static/7.png" width={210} height={124} alt="Starter" />
                     </div>
                     <div className="ccvec">
                       <div className="c667e ch13c cuj67 czjx8 czebt">$29.99/m</div>
@@ -251,7 +251,7 @@ function CardPricing() {
                     </div>
                     <div className="czebt">
                       <div className="ch13c cuj67 c1yzh cuowh">Premium Metal</div>
-                      <img className="ccryv cn7sg" src="./static/illustrations/demo_card.png" width={210} height={124} alt="Smart" />
+                      <img className="ccryv cn7sg" src="./static/Silver image.png" width={210} height={124} alt="Smart" />
                     </div>
                     <div className="ccvec">
                       <div className="c667e ch13c cuj67 czjx8 czebt">$49.99/m</div>
@@ -307,7 +307,7 @@ function CardPricing() {
                   <div className="cl239 ciev1 cj7ct c1gk0 c90zz c6d4u clzpq">
                     <div className="czebt">
                       <div className="ch13c cuj67 c1yzh cuowh">Teams</div>
-                      <img className="ccryv cn7sg" src="./static/illustrations/demo_card.png" width={210} height={124} alt="You" />
+                      <img className="ccryv cn7sg" src="./static/White Card.png" width={210} height={124} alt="You" />
                     </div>
                     <div className="ccvec">
                       <div className="c667e ch13c cuj67 czjx8 czebt">$69.99/m</div>
@@ -345,7 +345,7 @@ function CardPricing() {
                   <div className="cl239 ciev1 cj7ct c1gk0 c90zz c6d4u clzpq">
                     <div className="czebt">
                       <div className="ch13c cuj67 c1yzh cuowh">Enterprise</div>
-                      <img className="ccryv cn7sg" src="./static/illustrations/demo_card.png" width={210} height={124} alt="Black" />
+                      <img className="ccryv cn7sg" src="./static/6.jpg" width={210} height={124} alt="Black" />
                     </div>
                     <div className="ccvec">
                       <div className="c667e ch13c cuj67 czjx8 czebt">Varies</div>

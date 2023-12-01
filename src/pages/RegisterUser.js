@@ -67,7 +67,7 @@ export default function RegisterUser() {
     <Page title="Register">
       <RootStyle>
         <HeaderStyle>
-          <Logo />
+          {/* <Logo /> */}
           {smUp && (
             <Typography variant="body2" sx={{ mt: { md: -2 } }}>
               Already have an account? {''}
@@ -83,7 +83,7 @@ export default function RegisterUser() {
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
               Manage the profile more effectively with us
             </Typography>
-            <img alt="register" src="/static/illustrations/illustration_login.png" />
+            <img alt="register" src="/static/3.jpg" />
           </SectionStyle>
         )}
 

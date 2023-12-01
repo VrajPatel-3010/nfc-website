@@ -3,7 +3,6 @@ import ContactUs from '../pages/ContactUs';
 import "../CardPrice.css";
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import $ from 'jquery';
-import Iconify from '../components/Iconify';
 
 function FooterDetails() {
   const navigate = useNavigate();
@@ -13,7 +12,7 @@ function FooterDetails() {
     $("#homePage,#footer").hide();
     $(window).scrollTop(0);
   };
-  
+
   return (
     <>
       <section className="cw7wm" data-aos-id-4 id="contactUs">
@@ -161,10 +160,10 @@ function FooterDetails() {
                   <a className="cwaev c3bg1 ctlbf ci96u cpmmw" href="mailto:info@digiidhub.com">info@digiidhub.com</a>
                 </li>
                 <li>
-                <a className="cwaev c3bg1 ctlbf ci96u cpmmw" href="#0">11996 95 Ave, Delta</a>
+                  <a className="cwaev c3bg1 ctlbf ci96u cpmmw" href="#0">11996 95 Ave, Delta</a>
                 </li>
                 <li>
-                <a className="cwaev c3bg1 ctlbf ci96u cpmmw" href="#0">BC V4C 3T9</a>
+                  <a className="cwaev c3bg1 ctlbf ci96u cpmmw" href="#0">BC V4C 3T9</a>
                 </li>
                 <li>
                   <a className="cwaev c3bg1 ctlbf ci96u cpmmw" href="#0">Canada</a>

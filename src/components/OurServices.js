@@ -126,7 +126,7 @@ function OurServices() {
                         <circle className="cwobz" cx={10} cy={10} r={10} />
                         <path className="cxams" d="M15.335 7.933 14.87 7c-4.025 1.167-6.067 3.733-6.067 3.733l-1.867-1.4-.933.934L8.802 14c2.158-4.025 6.533-6.067 6.533-6.067Z" />
                       </svg>
-                      <span>starts from <a style={{color:"#1452a5"}}>49$</a></span>
+                      <span>starts from <a style={{color:"#1452a5"}}>149$</a></span>
                     </li>
                   </ul>
                 </div>
@@ -195,9 +195,8 @@ function OurServices() {
                         <circle className="cwobz" cx={10} cy={10} r={10} />
                         <path className="cxams" d="M15.335 7.933 14.87 7c-4.025 1.167-6.067 3.733-6.067 3.733l-1.867-1.4-.933.934L8.802 14c2.158-4.025 6.533-6.067 6.533-6.067Z" />
                       </svg>
-                      <span>starts from <a style={{color:"#1452a5"}}>199$</a></span>
+                      <span>starts from <a style={{color:"#1452a5"}}>299$</a></span>
                     </li>
-                    
                   </ul>
                 </div>
               </div>
@@ -218,7 +217,7 @@ function OurServices() {
             {/* Image */}
             <div className="cvznp cmzle cs6or chevy cn7sg cl4i1">
               <div className="ciev1 cz21g chzze">
-                <img src="./static/illustrations/services.png" className="cvznp cnq6c aos-init aos-animate" width={496} height={496} alt="Features 04" data-aos="fade-up" data-aos-anchor="[data-aos-id-4]" />
+                <img src="./static/services.png" className="cvznp cnq6c aos-init aos-animate" width={496} height={496} alt="Features 04" data-aos="fade-up" data-aos-anchor="[data-aos-id-4]" />
               </div>
             </div>
           </div>

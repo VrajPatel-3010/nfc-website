@@ -89,7 +89,6 @@ export default function PaymentPage() {
       }
     })
   };
-
   //Paypal Starts
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -142,7 +141,7 @@ export default function PaymentPage() {
       <div class="paymentcontainer mt-5">
 
         <div class="hero">
-          <img class="hero_img" src="/static/payment.png" alt="" />
+          <img class="hero_img" src="/static/payment.jpg" alt="" />
         </div>
         <div class="paymentcontent mt-2">
           <div class="text_content mt-3 text-center">

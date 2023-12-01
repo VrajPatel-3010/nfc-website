@@ -80,7 +80,7 @@ export default function Login() {
     <Page title="Login">
       <RootStyle>
         <HeaderStyle>
-          <Logo />
+          {/* <Logo /> */}
 
           {smUp && (
             <Typography variant="body2" sx={{ mt: { md: -2 } }}>
@@ -95,9 +95,9 @@ export default function Login() {
         {mdUp && (
           <SectionStyle>
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-              {/* Hi, Welcome Back */}
+              Hi, Welcome Back
             </Typography>
-            <img src="/static/illustrations/illustration_login.png" alt="login" />
+            <img src="/static/3.jpg" alt="login" />
           </SectionStyle>
         )}
 
