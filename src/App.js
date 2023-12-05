@@ -21,10 +21,22 @@ export default function App() {
   const [searchParams, setSearchParams] = useSearchParams();
   let themeId = searchParams.get("themeId")
   let phoneNo = searchParams.get("phoneNo")
+  const [dialog, setDialog] = useState(true);
+  const toggleDialog = () => {
+    setDialog(!dialog);
+  };
   return (<>
     {(themeId != null && phoneNo!=null)  ? <><ProfilePage phoneNo={phoneNo} themeId={themeId}/>
     </> :
-      <ThemeProvider>
+      <ThemeProvider>  {dialog && (
+        <div className="dialog">
+          <div className="dialog-content">
+            <button className="close-icon" onClick={toggleDialog}>&#10005;</button>
+            <br></br>
+            <img className="popup-image" src='static/1.jpg' alt="Popup Image" />
+          </div>
+        </div>
+      )}
         <Homepage />
         <Footer />
       </ThemeProvider>
