@@ -41,7 +41,7 @@ export default function HomePage() {
   }, []);
   return (
     <>
-      <div id="homePage" style={{ background: "#111827", minHeight: "100%" }}>
+      <div id="homePage" style={{ background: "#111827"}}>
         <img src="static/1.jpg" onClick={navigateToLogin} />
       </div>
 
@@ -64,7 +64,6 @@ export default function HomePage() {
           <Route path='paymentPage' element={<PaymentPage />} /> {/*A nested route!*/}
           <Route path='CardType' element={<CardType />} /> {/*A nested route!*/}
         </Route>
-
 
       </Routes>
 
