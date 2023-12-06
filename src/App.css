@@ -123,7 +123,6 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
   position: relative;
-  max-width: 50%;
   padding: 0 0;
 }
 /* Style for the close icon */
@@ -146,4 +145,10 @@
   height: auto;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 640px) {
+  .dialog-content {
+    max-width: 50%;
+  }
 }
