@@ -33,7 +33,7 @@ export default function App() {
           <div className="dialog-content">
             <button className="close-icon" onClick={toggleDialog}>&#10005;</button>
             <br></br>
-            <img className="popup-image" src='static/1.jpg' alt="Popup Image" />
+            <img className="popup-image" src='static/popup.png' alt="Popup Image" />
           </div>
         </div>
       )}
