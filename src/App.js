@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 import $ from 'jquery';
 import { useSearchParams } from "react-router-dom";
 import ProfilePage from './components/ProfilePage';
+import AuthService from "./services/auth.service";
 
 // ----------------------------------------------------------------------
 
@@ -25,10 +26,11 @@ export default function App() {
   const toggleDialog = () => {
     setDialog(!dialog);
   };
+  const user = AuthService.getCurrentUser();
   return (<>
-    {(themeId != null && phoneNo!=null)  ? <><ProfilePage phoneNo={phoneNo} themeId={themeId}/>
+    {(themeId != null && phoneNo != null) ? <><ProfilePage phoneNo={phoneNo} themeId={themeId} />
     </> :
-      <ThemeProvider>  {dialog && (
+      <ThemeProvider>  {!user && dialog && (
         <div className="dialog">
           <div className="dialog-content">
             <button className="close-icon" onClick={toggleDialog}>&#10005;</button>
