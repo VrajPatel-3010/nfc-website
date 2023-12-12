@@ -118,9 +118,9 @@
 }
 /* Style for the dialog content */
 .dialog-content {
-  background-color: #fff;
+  /* background-color: #fff; */
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
   text-align: center;
   position: relative;
   padding: 0 0;
@@ -128,7 +128,7 @@
 /* Style for the close icon */
 .close-icon {
   position: absolute;
-  top: 0;
+  top: 5%;
   right: 0;
   background-color: transparent;
   border: none;

@@ -1,10 +1,7 @@
 import React from "react";
-import Card from "./Card";
 import "../Service.css";
 import CarouselC from '../components/CarouselC'
 import OurServices from '../components/OurServices'
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
-import Iconify from '../components/Iconify';
 
 function Services() {
   return (
