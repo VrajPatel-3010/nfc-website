@@ -113,7 +113,7 @@ export default function Portfolio6({ phoneNo, withoutLogin }) {
                 Email
               </button>
             </a>
-            <a onClick={() => downloadTxtFile(CreateVCard())} rel="noreferrer"><button class="btn-reset btn6 btn__hh"><img src="/static/icons/download.svg" width="17px"></img>Save Contact</button></a>
+            <a onClick={() => downloadTxtFile(CreateVCard())} rel="noreferrer"><button class="btn-reset btn6 btn__hh"><img src="/static/icons/digital_hub-black-web.webp" width="17px"></img>Save Contact</button></a>
           </div>
           <div className="main__content">
             <h2 className="content__title">About</h2>

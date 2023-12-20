@@ -100,8 +100,8 @@ function ProfileCard(props) {
 				</div>
 				<div className="social-container">
 					<div><FaMobileAlt /> &nbsp;<a href={phoneTxt} style={{ color: "black" }}>{props.phone}</a></div>
-					<div><FaWhatsapp /> &nbsp;{props.whatsappNo}</div>
-					<div> <FaMailBulk /> &nbsp;<a href={mail} style={{ color: "black" }}>{props.email}</a></div>
+					<div><FaWhatsapp /> <a href={"https://wa.me/"+props.whatsappNo} style={{ color: "black" }}>&nbsp;{props.whatsappNo}</a></div>
+					<div><FaMailBulk /> &nbsp;<a href={mail} style={{ color: "black" }}>{props.email}</a></div>
 					<div><FaMapMarkerAlt /> &nbsp;{props.address}</div>
 				</div>
 			</div>

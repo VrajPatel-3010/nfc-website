@@ -106,7 +106,7 @@ export default function Portfolio({phoneNo,withoutLogin}) {
 
             <div className="text-block-2">{USERLIST.info}</div>
             <div className="text-block-3"><FaMobileAlt /> <a href={phoneTxt} style={{ color: "black" }}>{USERLIST.phone}</a></div>
-            <div className="text-block-4"><FaWhatsapp /> {USERLIST.whatsappNo}</div>
+            <div className="text-block-4"><FaWhatsapp /> <a href={"https://wa.me/"+USERLIST.whatsappNo} style={{ color: "black" }}>{USERLIST.whatsappNo}</a></div>
             <div className="text-block-5"><FaMailBulk /> <a href={mail} style={{ color: "black" }}>{USERLIST.email}</a></div>
             <div className="text-block-5"><FaMapMarkerAlt /> {USERLIST.address}</div>
           </div>
