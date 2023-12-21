@@ -17,9 +17,11 @@ import AuthService from "./services/auth.service";
 // ----------------------------------------------------------------------
 
 export default function App() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  let themeId = searchParams.get("themeId")
-  let phoneNo = searchParams.get("phoneNo")
+  //const [searchParams, setSearchParams] = useSearchParams();
+  const queryParameters = new URLSearchParams(window.location.search)
+
+  let themeId = queryParameters.get("themeId")
+  let phoneNo = queryParameters.get("phoneNo")
   const [dialog, setDialog] = useState(true);
   const toggleDialog = () => {
     setDialog(!dialog);
