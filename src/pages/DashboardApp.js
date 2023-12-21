@@ -117,7 +117,7 @@ export default function DashboardApp() {
                 id: faker.datatype.uuid(),
                 title: [
                   baseUrl +"/?themeId=" + themeId +"&phoneNo="+ phoneNo,
-                  'Last Update on 25-May-2023',
+                  'Last Update on 23-Dec-2023',
                 ][index],
                 type: `order${index + 1}`,
                 time: faker.date.past(),
