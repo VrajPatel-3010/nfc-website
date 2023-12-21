@@ -37,12 +37,25 @@ export default function DashboardApp() {
   const [activeStatus, setActiveStatus] = useState(0)
   const [themeId, setThemeId] = useState()
   const [phoneNo, setPhoneNo] = useState()
+  const [daysLeft, setDaysLeft] = useState(0)
 
   if (user) {
     loginId = user.id
     username = user.username
   }
+  
+  const date_diff_indays = () => {
+    const dt2 = new Date(2024, 0, 31);
+    const dt1 = new Date();  
+    setDaysLeft(Math.floor(
+      (Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) -
+        Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) /
+        (1000 * 60 * 60 * 24)
+    ))
+    return daysLeft
+  };
   useEffect(() => {
+    date_diff_indays()
     service.getIdList(loginId)
       .then(resp => {
         if (resp.data.length > 0) {
@@ -50,6 +63,10 @@ export default function DashboardApp() {
           setActiveStatus(resp.data[0].activeStatus)
           setThemeId(resp.data[0].themeId)
           setPhoneNo(resp.data[0].phone)
+
+          //Just for one month
+
+          setPrice("0 $")
         }
         else
           setPrice("0 $")
@@ -69,11 +86,11 @@ export default function DashboardApp() {
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Plan Expriy Date" total={"05-Jun-2024"} color="info" icon={'solar:calendar-linear'} />
+            <AppWidgetSummary title="Plan Expriy Date" total={"31-Jan-2024"} color="info" icon={'solar:calendar-linear'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Remainig Days" total={9553} color="success" icon={'teenyicons:bag-alt-solid'} />
+            <AppWidgetSummary title="Remainig Days" total={daysLeft} color="success" icon={'teenyicons:bag-alt-solid'} />
           </Grid>
           {activeStatus == 2 && 
           <Grid item xs={12} sm={6} md={3}>
