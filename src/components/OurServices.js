@@ -126,7 +126,7 @@ function OurServices() {
                         <circle className="cwobz" cx={10} cy={10} r={10} />
                         <path className="cxams" d="M15.335 7.933 14.87 7c-4.025 1.167-6.067 3.733-6.067 3.733l-1.867-1.4-.933.934L8.802 14c2.158-4.025 6.533-6.067 6.533-6.067Z" />
                       </svg>
-                      <span>starts from <a style={{color:"#1452a5"}}>149$</a></span>
+                      <span>starts from <a style={{color:"#1452a5"}}>249$</a></span>
                     </li>
                   </ul>
                 </div>
@@ -195,7 +195,7 @@ function OurServices() {
                         <circle className="cwobz" cx={10} cy={10} r={10} />
                         <path className="cxams" d="M15.335 7.933 14.87 7c-4.025 1.167-6.067 3.733-6.067 3.733l-1.867-1.4-.933.934L8.802 14c2.158-4.025 6.533-6.067 6.533-6.067Z" />
                       </svg>
-                      <span>starts from <a style={{color:"#1452a5"}}>299$</a></span>
+                      <span>starts from <a style={{color:"#1452a5"}}>399$</a></span>
                     </li>
                   </ul>
                 </div>

@@ -195,7 +195,7 @@ function CardPricing() {
                       <img className="ccryv cn7sg" src="./static/7.png" width={210} height={124} alt="Starter" />
                     </div>
                     <div className="ccvec">
-                      <div className="c667e ch13c cuj67 czjx8 czebt">$29.99/m</div>
+                      <div className="c667e ch13c cuj67 czjx8 czebt">$69.99/m</div>
                       <a className="ckjmd cbsyx cwvj9 cuscs ciduz czb8d cy2kq cn7sg" onClick={navigateToLogin}>Get Starter</a>
                     </div>
                     <div className="c667e cuy1u czebt">Features include</div>
@@ -254,7 +254,7 @@ function CardPricing() {
                       <img className="ccryv cn7sg" src="./static/Silver image.png" width={210} height={124} alt="Smart" />
                     </div>
                     <div className="ccvec">
-                      <div className="c667e ch13c cuj67 czjx8 czebt">$49.99/m</div>
+                      <div className="c667e ch13c cuj67 czjx8 czebt">$69.99/m</div>
                       <a className="cpygj camqk cbsyx ckf1f cuscs czb8d cy2kq cn7sg" onClick={navigateToLogin}>Get Smart</a>
                     </div>
                     <div className="c667e cuy1u czebt">Everything in PVC, plus</div>
