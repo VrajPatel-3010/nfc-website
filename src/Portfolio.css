@@ -60,6 +60,7 @@ h4 {
   border-color: #fff;
   border-radius: 50%;
   box-shadow: 0 0 20px -8px #000;
+  max-width: 45%;
 }
 
 .text {
@@ -292,6 +293,7 @@ img {
     left: auto;
     /* top: 0%; */
     bottom: 90px;
+
 }
 .logodesktop {
   display: none;
