@@ -42,7 +42,7 @@ export default function HomePage() {
   return (
     <>
       <div id="homePage" style={{ background: "#111827"}}>
-        <img src="static/1.png" onClick={navigateToLogin} />
+        <img src="static/1.jpg" onClick={navigateToLogin} />
       </div>
 
       <Routes>
