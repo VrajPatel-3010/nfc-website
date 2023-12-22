@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaMapMarkerAlt, FaMobileAlt, FaMailBulk, FaWhatsapp } from "react-icons/fa";
+import { FaMapMarkerAlt, FaMobileAlt, FaMailBulk, FaWhatsapp,FaLink } from "react-icons/fa";
 import { useEffect } from 'react';
 import AuthService from "../services/auth.service";
 import '../Portfolio.css';
@@ -105,8 +105,10 @@ export default function Portfolio({phoneNo,withoutLogin}) {
             <br></br>
 
             <div className="text-block-2">{USERLIST.info}</div>
+            
             <div className="text-block-3"><FaMobileAlt /> <a href={phoneTxt} style={{ color: "black" }}>{USERLIST.phone}</a></div>
             <div className="text-block-4"><FaWhatsapp /> <a href={"https://wa.me/"+USERLIST.whatsappNo} style={{ color: "black" }}>{USERLIST.whatsappNo}</a></div>
+            <div className="text-block-5"><FaLink /> <a href={USERLIST.url} style={{ color: "black" }}>{USERLIST.url}</a></div>
             <div className="text-block-5"><FaMailBulk /> <a href={mail} style={{ color: "black" }}>{USERLIST.email}</a></div>
             <div className="text-block-5"><FaMapMarkerAlt /> {USERLIST.address}</div>
           </div>
