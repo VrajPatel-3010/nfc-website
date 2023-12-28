@@ -5,8 +5,8 @@ import "../Service.css";
 import AuthService from "../services/auth.service";
 import service from "../services/service";
 // const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
-const CLIENT_ID = "Af_3AVlKVI-m5iglhvY0FN7N1uRdVwbWTgXH-YX2wLbuOcnAsxr_vJgUUW7Wh0ZWd5i4j_a3DLYSu8_3&enable-funding=venmo&currency=CAD";
-const APP_SECRET = "";
+const CLIENT_ID = "AZ7MINribKE2f0jIG7xSByX_ZmYBSvVGLpKaBUDauBqxT427Dm2snYgR2tavv-Umndyns_hmSn_1pCm1";
+const APP_SECRET = "ENG4rPmgGSCAO8fKGrQ42zce0j5diwODYkFTeIMyKIASDCRWigcW81gkbafFfM4maX3odLuvK8XSBioe";
 export default function PaymentPage() {
   const navigate = useNavigate();
 
