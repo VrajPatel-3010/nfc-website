@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { FaMapMarkerAlt, FaMobileAlt, FaMailBulk, FaWhatsapp,FaLink } from "react-icons/fa";
+import { FaMapMarkerAlt, FaMobileAlt, FaMailBulk, FaWhatsapp, FaLink } from "react-icons/fa";
 import { useEffect } from 'react';
 import AuthService from "../services/auth.service";
 import '../Portfolio.css';
 import service from "../services/service";
 
-export default function Portfolio({phoneNo,withoutLogin}) {
+export default function Portfolio({ phoneNo, withoutLogin }) {
   // Get the contact information from the website 
   const downloadTxtFile = vcfText => {
     const element = document.createElement("a");
@@ -23,25 +23,25 @@ export default function Portfolio({phoneNo,withoutLogin}) {
 
   const [USERLIST, setUSERLIST] = useState({});
   useEffect(() => {
-    if(withoutLogin){
-    service.dataListByPhoneNo(phoneNo)
-      .then(resp => {
-        console.log(resp.data[0]);
-        if (resp.data.length > 0) {
-          setUSERLIST(resp.data[0])
-          console.log(USERLIST);
-        }
-      })
+    if (withoutLogin) {
+      service.dataListByPhoneNo(phoneNo)
+        .then(resp => {
+          console.log(resp.data[0]);
+          if (resp.data.length > 0) {
+            setUSERLIST(resp.data[0])
+            console.log(USERLIST);
+          }
+        })
     }
-    else{
+    else {
       service.getIdList(loginId)
-      .then(resp => {
-        console.log(resp.data[0]);
-        if (resp.data.length > 0) {
-          setUSERLIST(resp.data[0])
-          console.log(USERLIST);
-        }
-      })
+        .then(resp => {
+          console.log(resp.data[0]);
+          if (resp.data.length > 0) {
+            setUSERLIST(resp.data[0])
+            console.log(USERLIST);
+          }
+        })
     }
   }, []);
 
@@ -105,12 +105,14 @@ export default function Portfolio({phoneNo,withoutLogin}) {
             <br></br>
 
             <div className="text-block-2">{USERLIST.info}</div>
-            
-            <div className="text-block-3"><FaMobileAlt /> <a href={phoneTxt} style={{ color: "black" }}>{USERLIST.phone}</a></div>  
-            <div className="text-block-4"><FaWhatsapp /> <a href={"https://wa.me/"+USERLIST.whatsappNo} style={{ color: "black" }}>{USERLIST.whatsappNo}</a></div>
+
+            <div className="text-block-3"><FaMobileAlt /> <a href={phoneTxt} style={{ color: "black" }}>{USERLIST.phone}</a></div>
+            <div className="text-block-4"><FaWhatsapp /> <a href={"https://wa.me/" + USERLIST.whatsappNo} style={{ color: "black" }}>{USERLIST.whatsappNo}</a></div>
             <div className="text-block-5"><FaLink /> <a href={USERLIST.url} style={{ color: "black" }}>{USERLIST.url}</a></div>
             <div className="text-block-5"><FaMailBulk /> <a href={mail} style={{ color: "black" }}>{USERLIST.email}</a></div>
-            <div className="text-block-5"><FaMapMarkerAlt /> {USERLIST.address}</div>
+            {!(USERLIST.address == '-' || USERLIST.address == '') ?
+              <div className="text-block-5"><FaMapMarkerAlt /> {USERLIST.address}</div>
+              : <></>}
           </div>
         </div>
         <div className="actionbar">
@@ -120,11 +122,11 @@ export default function Portfolio({phoneNo,withoutLogin}) {
         </div>
       </div>
       {!withoutLogin &&
-      <div className="text-center">
-        <a onClick={() => AuthService.confirmTheme(USERLIST.id,phone, 1)} className="confirmation-btn">
-          <div className="cta">Confirm&nbsp;Theme</div>
-        </a>
-      </div>
+        <div className="text-center">
+          <a onClick={() => AuthService.confirmTheme(USERLIST.id, phone, 1)} className="confirmation-btn">
+            <div className="cta">Confirm&nbsp;Theme</div>
+          </a>
+        </div>
       }
     </div>
   )

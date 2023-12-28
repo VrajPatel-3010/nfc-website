@@ -52,7 +52,7 @@ export default function RegisterForm() {
       lastName: Yup.string().required('Last name required'),
       email: Yup.string().email('Email must be a valid email address').required('Email is required'),
       phone: Yup.string().required('Phone no required'),
-      address: Yup.string().required('Address required'),
+      //address: Yup.string().required('Address required'),
       title: Yup.string().required('Title'),
       org: Yup.string().required('Organization required'),
       whatsappNo: Yup.string().required('Whatsapp Number required'),

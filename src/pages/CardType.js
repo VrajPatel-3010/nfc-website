@@ -270,7 +270,7 @@ export default function CardType() {
                 </div>
               </div>
             </Stack>
-            <Stack spacing={1} direction="row" sx={{ marginBottom: 4 }}>
+            {/* <Stack spacing={1} direction="row" sx={{ marginBottom: 4 }}>
               <div className="row">
                 <div className="col-6">
                   <div className="cb-container" style={{ marginBottom: '0px' }}>
@@ -301,7 +301,7 @@ export default function CardType() {
                   </div>
                 </div>
               </div>
-            </Stack>
+            </Stack> */}
             <div className='text-center'>
               <LoadingButton size="large" type="submit" variant="contained" >
                 Confirm Card
