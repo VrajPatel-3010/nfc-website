@@ -300,7 +300,7 @@ export default function RegisterForm() {
               </Stack>
 
               <LoadingButton fullWidth size="medium" type="submit" variant="contained" loading={isSubmitting}>
-                Update Price
+                Update
               </LoadingButton>
               <LoadingButton fullWidth size="medium" onClick={inactiveUser} variant="contained" loading={isSubmitting}>
                 {activeStatus == 1 ? "Inactive" : "Active"}
