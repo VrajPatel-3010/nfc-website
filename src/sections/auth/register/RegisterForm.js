@@ -246,6 +246,7 @@ export default function RegisterForm() {
               className="form-control"
               id="attachment"
               name="attachment"
+              required
               onChange={(e) => setSelectedFile(e.target.files[0])}
             /> : <input
               type="file"
