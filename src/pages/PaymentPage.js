@@ -5,7 +5,8 @@ import "../Service.css";
 import AuthService from "../services/auth.service";
 import service from "../services/service";
 // const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
-const CLIENT_ID = "EHbAcRIISZraEnpToF5jPlK1f2BmQSB26fWSkgK9eu53weAoNi535WiFwaU5s0dlsfnbQE1kq4GhW1Ag";
+const CLIENT_ID = "AblqaQAR1nG0C_jKbAY5TRvbM6DKlnaSy-LHhE4Gy2FODQYkU99GaPHG5-QPHfVl1KnjDGIRYML5sXl3";
+const APP_SECRET = "";
 export default function PaymentPage() {
   const navigate = useNavigate();
 
@@ -107,7 +108,7 @@ export default function PaymentPage() {
           description: "NFC Card Order",
           amount: {
             currency_code: "CAD",
-            value: "1",
+            value: 1,
           },
         },
       ],
