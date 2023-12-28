@@ -5,8 +5,7 @@ import "../Service.css";
 import AuthService from "../services/auth.service";
 import service from "../services/service";
 // const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
-const CLIENT_ID = "AZ7MINribKE2f0jIG7xSByX_ZmYBSvVGLpKaBUDauBqxT427Dm2snYgR2tavv-Umndyns_hmSn_1pCm1";
-const APP_SECRET = "ENG4rPmgGSCAO8fKGrQ42zce0j5diwODYkFTeIMyKIASDCRWigcW81gkbafFfM4maX3odLuvK8XSBioe";
+const CLIENT_ID = "EHbAcRIISZraEnpToF5jPlK1f2BmQSB26fWSkgK9eu53weAoNi535WiFwaU5s0dlsfnbQE1kq4GhW1Ag";
 export default function PaymentPage() {
   const navigate = useNavigate();
 
@@ -43,6 +42,11 @@ export default function PaymentPage() {
   //     }
   // });
 
+  const initialOptions = {
+    clientId: CLIENT_ID,
+    currency: "CAD",
+    intent: "capture",
+};
 
 
 
@@ -103,7 +107,7 @@ export default function PaymentPage() {
           description: "NFC Card Order",
           amount: {
             currency_code: "CAD",
-            value: totalAmoutTobePaid,
+            value: "1",
           },
         },
       ],
@@ -185,7 +189,7 @@ export default function PaymentPage() {
                         <td className="product-subtotal" data-title="Subtotal">
                           <span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span> 69</bdi></span>						</td>
                       </tr>
-                      {isLogoAdded && <tr className="woocommerce-cart-form__cart-item cart_item">
+                      {/* {isLogoAdded && <tr className="woocommerce-cart-form__cart-item cart_item">
                         <td className="product-price" data-title="Price">
                           <span className="woocommerce-Price-amount amount"><bdi> 1</bdi></span>						</td>
                         <td className="product-quantity" data-title="Quantity">
@@ -195,9 +199,9 @@ export default function PaymentPage() {
                         </td>
                         <td className="product-subtotal" data-title="Subtotal">
                           <span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span> 30</bdi></span>						</td>
-                      </tr>}
+                      </tr>} */}
 
-                      {isFobAdded && <tr className="woocommerce-cart-form__cart-item cart_item">
+                      {/* {isFobAdded && <tr className="woocommerce-cart-form__cart-item cart_item">
                         <td className="product-price" data-title="Price">
                           <span className="woocommerce-Price-amount amount"><bdi> 1</bdi></span>						</td>
                         <td className="product-quantity" data-title="Quantity">
@@ -207,9 +211,9 @@ export default function PaymentPage() {
                         </td>
                         <td className="product-subtotal" data-title="Subtotal">
                           <span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span> 10</bdi></span>						</td>
-                      </tr>}
+                      </tr>} */}
 
-                      {isSmartBtnAdded && <tr className="woocommerce-cart-form__cart-item cart_item">
+                      {/* {isSmartBtnAdded && <tr className="woocommerce-cart-form__cart-item cart_item">
                         <td className="product-price" data-title="Price">
                           <span className="woocommerce-Price-amount amount"><bdi> 1</bdi></span>						</td>
                         <td className="product-quantity" data-title="Quantity">
@@ -219,7 +223,7 @@ export default function PaymentPage() {
                         </td>
                         <td className="product-subtotal" data-title="Subtotal">
                           <span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span> 10</bdi></span>						</td>
-                      </tr>}
+                      </tr>} */}
                     </tbody>
                   </table>
                 </div>
@@ -278,7 +282,7 @@ export default function PaymentPage() {
 
         </div>
         <div className="p-5">
-          <PayPalScriptProvider options={{ "client-id": CLIENT_ID }}>
+          <PayPalScriptProvider options={initialOptions}>
             <div>                
               <br></br>
                 <PayPalButtons
