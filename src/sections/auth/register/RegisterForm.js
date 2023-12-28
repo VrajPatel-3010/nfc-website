@@ -145,7 +145,8 @@ export default function RegisterForm() {
       if (confirmBox === true) {
         setMessage("");
         setLoading(true);
-        service.updatePrice(formId, data.price)
+        //service.updatePrice(formId, data.price)
+        service.update(formId, formData)
           .then(response => {
             console.log(response.data);
             setMessage("Price updated successfully !");
