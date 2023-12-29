@@ -50,13 +50,13 @@ export default function RegisterForm() {
     {
       firstName: Yup.string().required('First name required'),
       lastName: Yup.string().required('Last name required'),
-      email: Yup.string().email('Email must be a valid email address').required('Email is required'),
+      //email: Yup.string().email('Email must be a valid email address').required('Email is required'),
       phone: Yup.string().required('Phone no required'),
       //address: Yup.string().required('Address required'),
       title: Yup.string().required('Title'),
       org: Yup.string().required('Organization required'),
       whatsappNo: Yup.string().required('Whatsapp Number required'),
-      info: Yup.string().required('About us required'),
+      //info: Yup.string().required('About us required'),
     }
 
   );

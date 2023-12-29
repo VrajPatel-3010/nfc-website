@@ -91,6 +91,8 @@ export default function PaymentPage() {
   function sendConfirmationEmail(loginId){
     service.sendConfirmationEmail(loginId, window.location.origin).then(resp => {
       if (resp.data != undefined) {
+        console.log(resp.data)
+        setSuccess(true);
       }
     })
   };
@@ -123,13 +125,14 @@ export default function PaymentPage() {
     return actions.order.capture().then(function (details) {
       const { payer } = details;
       sendConfirmationEmail(loginId);
-      setSuccess(true);
     });
   };
 
   //capture likely error
   const onError = (data, actions) => {
     setErrorMessage("An Error occured with your payment ");
+    alert("An Error occured with your payment");
+    setSuccess(false)
   };
 
   useEffect(() => {
@@ -290,6 +293,7 @@ export default function PaymentPage() {
                   style={{ layout: "vertical" }}
                   createOrder={createOrder}
                   onApprove={onApprove}
+                  onError={onError}
                 />
             </div>
           </PayPalScriptProvider>

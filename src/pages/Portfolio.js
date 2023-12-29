@@ -104,7 +104,9 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
             <div className="text-block">{USERLIST.firstName}&nbsp;{USERLIST.lastName}</div>
             <br></br>
 
-            <div className="text-block-2">{USERLIST.info}</div>
+            {!(USERLIST.title == '-' || USERLIST.title == '') ?
+             <div className="text-block-2">{USERLIST.title}</div>
+              : <></>}
 
             <div className="text-block-3"><FaMobileAlt /> <a href={phoneTxt} style={{ color: "black" }}>{USERLIST.phone}</a></div>
             <div className="text-block-4"><FaWhatsapp /> <a href={"https://wa.me/" + USERLIST.whatsappNo} style={{ color: "black" }}>{USERLIST.whatsappNo}</a></div>
