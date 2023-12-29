@@ -5,7 +5,7 @@ import "../Service.css";
 import AuthService from "../services/auth.service";
 import service from "../services/service";
 // const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
-const CLIENT_ID = "AblqaQAR1nG0C_jKbAY5TRvbM6DKlnaSy-LHhE4Gy2FODQYkU99GaPHG5-QPHfVl1KnjDGIRYML5sXl3";
+const CLIENT_ID = "AYcGnNjmoAfp1ShB0SAfITeAkHYdHh4EcF3tCPg3gG3dTnnX49TtY7FcKqiVPRKQPIScn5cX5XzT61_9";
 const APP_SECRET = "";
 export default function PaymentPage() {
   const navigate = useNavigate();
