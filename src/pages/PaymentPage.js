@@ -108,7 +108,7 @@ export default function PaymentPage() {
           description: "NFC Card Order",
           amount: {
             currency_code: "CAD",
-            value: 1,
+            value: totalAmoutTobePaid,
           },
         },
       ],
