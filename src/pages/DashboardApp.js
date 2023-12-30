@@ -77,7 +77,7 @@ export default function DashboardApp() {
     <Page title="Dashboard">
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back {username}
+          Hi, Welcome back
         </Typography>
 
         <Grid container spacing={3}>
@@ -120,7 +120,7 @@ export default function DashboardApp() {
                   'Last Update on 23-Dec-2023',
                 ][index],
                 type: `order${index + 1}`,
-                time: faker.date.past(),
+                time: new Date(),
               }))}
             />
           </Grid>

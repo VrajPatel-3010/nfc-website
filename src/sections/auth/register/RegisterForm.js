@@ -24,6 +24,7 @@ export default function RegisterForm() {
   const id = useLocation();
   let formId = "";
   let admin = false
+  let alreadyRegister = false
   const [isUpdate, setIsUpdate] = useState(false)
   const [activeStatus, setActiveStatus] = useState(0)
 
@@ -39,6 +40,14 @@ export default function RegisterForm() {
       admin = true
     }
   }
+  if (!admin) {
+    service.getIdList(loginId)
+      .then(resp => {
+        if (resp.data.length > 0) {
+          alreadyRegister = true
+        }
+      })
+  }
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -51,11 +60,11 @@ export default function RegisterForm() {
       firstName: Yup.string().required('First name required'),
       lastName: Yup.string().required('Last name required'),
       //email: Yup.string().email('Email must be a valid email address').required('Email is required'),
-      phone: Yup.string().required('Phone no required'),
+      phone: Yup.string().required('Phone no required').matches(/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/,'The field should have digits only'),
       //address: Yup.string().required('Address required'),
       title: Yup.string().required('Title'),
       org: Yup.string().required('Organization required'),
-      whatsappNo: Yup.string().required('Whatsapp Number required'),
+      whatsappNo: Yup.string().matches(/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/,'The field should have digits only'),
       //info: Yup.string().required('About us required'),
     }
 
@@ -64,7 +73,7 @@ export default function RegisterForm() {
   const defaultValues = {
     firstName: '',
     lastName: '',
-    email: '',
+    email: user.email,
     password: '',
     phone: '',
     address: '',
@@ -162,6 +171,7 @@ export default function RegisterForm() {
       }
     }
     else {
+      if(!alreadyRegister){
       service.create(formData)
         .then(response => {
           console.log(response.data);
@@ -174,7 +184,12 @@ export default function RegisterForm() {
           setMessage("Issue in Data Submission ! ");
           setLoading(false);
         });
-    }
+      }
+      else{
+          setMessage("You have already register ! Please use update method !");
+          setLoading(false);
+      }
+  }
   };
 
   const deleteEntry = (data) => {

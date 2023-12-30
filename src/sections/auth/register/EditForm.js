@@ -28,11 +28,11 @@ export default function EditForm() {
     firstName: Yup.string().required('First name required'),
     lastName: Yup.string().required('Last name required'),
     //email: Yup.string().email('Email must be a valid email address').required('Email is required'),
-    phone: Yup.string().required('Phone no required'),
+    phone: Yup.string().required('Phone no required').matches("/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/","The field should have digits only"),
     //address: Yup.string().required('Address required'),
     title: Yup.string().required('Title'),
     org: Yup.string().required('Organization required'),
-    whatsappNo: Yup.string().required('Whatsapp Number required'),
+    whatsappNo: Yup.string().matches("/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/","The field should have digits only"),
     //info: Yup.string().required('About us required'),
   });
 

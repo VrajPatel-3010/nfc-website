@@ -25,7 +25,11 @@ export default function RegisterFormLogin() {
     firstName: Yup.string().required('First name required'),
     lastName: Yup.string().required('Last name required'),
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
-    password: Yup.string().required('Password is required'),
+    password: Yup.string().required('Password is required').min(8, 'Password must be 8 characters long')
+    .matches(/[0-9]/, 'Password requires a number')
+    .matches(/[a-z]/, 'Password requires a lowercase letter')
+    .matches(/[A-Z]/, 'Password requires an uppercase letter'),
+    // .matches(/[^\w]/, 'Password requires a symbol/special character'),
     //individual: Yup.string().required('Either Individual or Team required'),
     //team: Yup.boolean('Either Individual or Team required').required('Either Individual or Team required'),
     //individual: Yup.boolean('Select this checkbox please'),    
@@ -36,8 +40,8 @@ export default function RegisterFormLogin() {
     lastName: '',
     email: '',
     password: '',
-    individual:false,
-    team:false,
+    individual: false,
+    team: false,
   };
 
   const methods = useForm({
@@ -52,16 +56,16 @@ export default function RegisterFormLogin() {
 
   const onSubmit = async (data) => {
     console.log(data)
-    if(!(data.individual || data.team)){
+    if (!(data.individual || data.team)) {
       alert("Either Individual or Team required");
       return false;
     }
 
-    if(data.individual && data.team){
+    if (data.individual && data.team) {
       alert("Either Individual or Team required");
       return false;
     }
-   
+
     AuthService.register(data).then((response) => {
       setLoading(false);
       setMessage(response.message);
@@ -104,8 +108,8 @@ export default function RegisterFormLogin() {
             ),
           }}
         />
-        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} style={{alignItems:"baseline"}}>
-          <RHFCheckbox name="individual" label="Individual"/>
+        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} style={{ alignItems: "baseline" }}>
+          <RHFCheckbox name="individual" label="Individual" />
           <RHFCheckbox name="team" label="Team" />
         </Stack>
 
