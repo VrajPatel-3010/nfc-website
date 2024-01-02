@@ -15,6 +15,7 @@ import Portfolio5 from '../pages/Portfolio5';
 import Portfolio6 from '../pages/Portfolio6';
 import PaymentPage from '../pages/PaymentPage';
 import CardType from '../pages/CardType';
+import ForgotPassword from '../pages/ForgotPassword';
 
 import Products from '../pages/Products';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
@@ -48,6 +49,7 @@ export default function HomePage() {
       <Routes>
         <Route path="/Login" element={<Login />} />
         <Route path="/registerUser" element={<RegisterUser />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
 
         <Route path='/dashboard' element={<DashboardLayout />}>
           <Route path='app' element={<DashboardApp />} />

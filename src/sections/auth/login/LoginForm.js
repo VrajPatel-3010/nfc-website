@@ -14,6 +14,7 @@ import AuthService from "../../../services/auth.service";
 import Router from '../../../../src/routes';
 // ----------------------------------------------------------------------
 import { Route, Routes } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import DashboardLayout from '../../../layouts/dashboard';
 import DashboardApp from '../../../pages/DashboardApp';
 import User from '../../../pages/User';
@@ -23,6 +24,7 @@ import Login from '../../../pages/Login';
 import $ from 'jquery';
 import Portfolio from '../../../pages/Portfolio';
 import ContactUs from '../../../pages/ContactUs';
+import ForgotPassword from '../../../pages/ForgotPassword';
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -106,7 +108,7 @@ export default function LoginForm() {
 
       <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
         <RHFCheckbox name="remember" label="Remember me" />
-        <Link variant="subtitle2" underline="hover">
+        <Link variant="subtitle2" underline="hover" component={RouterLink} to="/forgotPassword">
           Forgot password?
         </Link>
       </Stack>
@@ -132,6 +134,7 @@ export default function LoginForm() {
         <Route path='/products' element={< Products />} /> {/*A nested route!*/}
         <Route path='/portfolio' element={< Portfolio/>} /> {/*A nested route!*/}
         <Route path='/contactUs' element={<ContactUs />} /> {/*A nested route!*/}
+        <Route path='/ForgotPassword' element={<ForgotPassword />} /> {/*A nested route!*/}
       </Routes>
 
     </FormProvider>

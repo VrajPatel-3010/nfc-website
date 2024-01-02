@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //const API_URL = "http://localhost:8080/api/";
-const API_URL = "http://ec2-44-204-204-236.compute-1.amazonaws.com:8080/api/";
+const API_URL = "http://ec2-44-204-212-251.compute-1.amazonaws.com:8080/api/";
 
 const register = (data) => {
   return axios.post(API_URL + "signup", {
@@ -36,12 +36,10 @@ const getCurrentUser = () => {
 };
 
 
-const forgotPassword = (username, password, reTypePassword) => {
+const forgotPassword = (data) => {
   return axios
     .post(API_URL + "forgotPassword", {
-      username,
-      password,
-      reTypePassword,
+      data,
     })
 };
 
