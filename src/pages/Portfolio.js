@@ -109,7 +109,7 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
               : <></>}
 
             {!(USERLIST.org == '-' || USERLIST.org == '') ?
-              <><br /><div className="text-block-2" style={{color:"red",fontSize:"14px"}}>{USERLIST.org}</div></>
+              <><div className="text-block-2" style={{color:"red",fontSize:"15px",fontWeight:"bold"}}>{USERLIST.org}</div></>
               : <></>}
 
             <div className="text-block-3"><FaMobileAlt /> <a href={phoneTxt} style={{ color: "black" }}>{USERLIST.phone}</a></div>
