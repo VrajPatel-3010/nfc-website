@@ -7,14 +7,7 @@ import service from "../services/service";
 
 export default function Portfolio({ phoneNo, withoutLogin }) {
   // Get the contact information from the website 
-  const downloadTxtFile = vcfText => {
-    const element = document.createElement("a");
-    const file = new Blob([vcfText], { type: "text/vcard" });
-    element.href = URL.createObjectURL(file);
-    element.download = "vCard.vcf";
-    document.body.appendChild(element);
-    element.click();
-  };
+  
   const user = AuthService.getCurrentUser();
   let loginId = 0
   if (user) {
@@ -59,6 +52,15 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
   let org = USERLIST.org;
   let url = USERLIST.url;
 
+  const downloadTxtFile = vcfText => {
+    const element = document.createElement("a");
+    const file = new Blob([vcfText], { type: "text/vcard" });
+    element.href = URL.createObjectURL(file);
+    element.download = firstName+".vcf";
+    document.body.appendChild(element);
+    element.click();
+  };
+
   const CreateVCard = () => {
     let vCard = 'BEGIN:VCARD\n' +
       'VERSION:4.0\n' +
@@ -102,14 +104,12 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
           </div>
           <div className="text">
             <div className="text-block">{USERLIST.firstName}&nbsp;{USERLIST.lastName}</div>
-            <br></br>
-
             {!(USERLIST.title == '-' || USERLIST.title == '') ?
               <div className="text-block-2">({USERLIST.title})</div>
               : <></>}
 
             {!(USERLIST.org == '-' || USERLIST.org == '') ?
-              <><div className="text-block-2" style={{color:"red",fontSize:"15px",fontWeight:"bold"}}>{USERLIST.org}</div></>
+              <><br /><div className="text-block-2" style={{color:"red",fontSize:"15px",fontWeight:"bold"}}>{USERLIST.org}</div></>
               : <></>}
 
             <div className="text-block-3"><FaMobileAlt /> <a href={phoneTxt} style={{ color: "black" }}>{USERLIST.phone}</a></div>
