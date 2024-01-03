@@ -63,7 +63,7 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
 
   const CreateVCard = () => {
     let vCard = 'BEGIN:VCARD\n' +
-      'VERSION:4.0\n' +
+      'VERSION:3.0\n' +
       'FN:' + firstName + lastName + '\n' +
       'N:' + lastName + ';' + firstName + ';\n' +
       // 'GENDER:M\n'+
