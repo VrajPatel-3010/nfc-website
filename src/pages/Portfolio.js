@@ -54,7 +54,7 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
 
   const downloadTxtFile = vcfText => {
     const element = document.createElement("a");
-    const file = new Blob([vcfText], { type: "text/x-vcard" });
+    const file = new Blob([vcfText], { type: "text/vcard" });
     element.href = URL.createObjectURL(file);
     element.download = firstName+".vcf";
     document.body.appendChild(element);
