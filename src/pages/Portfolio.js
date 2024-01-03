@@ -105,13 +105,27 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
             <br></br>
 
             {!(USERLIST.title == '-' || USERLIST.title == '') ?
-             <div className="text-block-2">{USERLIST.title}</div>
+              <div className="text-block-2">({USERLIST.title})</div>
+              : <></>}
+
+            {!(USERLIST.org == '-' || USERLIST.org == '') ?
+              <><br /><div className="text-block-2" style={{color:"red",fontSize:"14px"}}>{USERLIST.org}</div></>
               : <></>}
 
             <div className="text-block-3"><FaMobileAlt /> <a href={phoneTxt} style={{ color: "black" }}>{USERLIST.phone}</a></div>
+            
+            {!(USERLIST.whatsappNo == '-' || USERLIST.whatsappNo == '') ?
             <div className="text-block-4"><FaWhatsapp /> <a href={"https://wa.me/" + USERLIST.whatsappNo} style={{ color: "black" }}>{USERLIST.whatsappNo}</a></div>
-            <div className="text-block-5"><FaLink /> <a href={USERLIST.url} style={{ color: "black" }}>{USERLIST.url}</a></div>
-            <div className="text-block-5"><FaMailBulk /> <a href={mail} style={{ color: "black" }}>{USERLIST.email}</a></div>
+            : <></>}
+
+
+            {!(USERLIST.url == '-' || USERLIST.url == '') ?
+              <div className="text-block-5"><FaLink /> <a href={USERLIST.url} style={{ color: "black" }}>{USERLIST.url}</a></div>
+              : <></>}
+
+            {!(USERLIST.email == '-' || USERLIST.email == '') ?
+              <div className="text-block-5"><FaMailBulk /> <a href={mail} style={{ color: "black" }}>{USERLIST.email}</a></div>
+            : <></>}
             {!(USERLIST.address == '-' || USERLIST.address == '') ?
               <div className="text-block-5"><FaMapMarkerAlt /> {USERLIST.address}</div>
               : <></>}
