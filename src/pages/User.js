@@ -231,11 +231,8 @@ export default function User() {
           </Button> */}
         </Stack>
 
-        <Card>
-          <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
-
-          <Scrollbar>
-            <TableContainer sx={{ minWidth: 800 }}>
+        <Card style={{maxHeight:"100%"}}>
+            <TableContainer sx={{ minWidth: 800}}>
               <Table>
                 <UserListHead
                   order={order}
@@ -308,7 +305,6 @@ export default function User() {
                 )}
               </Table>
             </TableContainer>
-          </Scrollbar>
 
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
