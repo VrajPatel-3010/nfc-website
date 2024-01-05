@@ -47,7 +47,7 @@ export default function PaymentPage() {
     clientId: CLIENT_ID,
     currency: "CAD",
     intent: "capture",
-};
+  };
 
 
 
@@ -102,7 +102,10 @@ export default function PaymentPage() {
   const [ErrorMessage, setErrorMessage] = useState("");
   const [orderID, setOrderID] = useState(false);
   // creates a paypal order
-  let totalAmoutTobePaid = isLogoAdded ? parseInt(price) + parseInt(cardPrice) + 20 : parseInt(price) + parseInt(cardPrice);
+  let totalAmoutTobePaid = isLogoAdded ? (parseInt(price) + parseInt(cardPrice) + 29.99) : (parseInt(price) + parseInt(cardPrice));
+  // creates a paypal order
+  let taxAmoutTobePaid = totalAmoutTobePaid * 0.12;
+
   const createOrder = (data, actions) => {
     return actions.order.create({
       purchase_units: [
@@ -154,7 +157,7 @@ export default function PaymentPage() {
         <div class="paymentcontent mt-2">
           <div class="text_content mt-3 text-center">
             <h1>Order Summary</h1>
-            <p>{firstName} {lastName}</p>
+            <p><u>{firstName} {lastName}</u></p>
           </div>
 
           <div className="container woocommerce row row-large row-divided">
@@ -169,7 +172,7 @@ export default function PaymentPage() {
                         <th className="product-subtotal">Price</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody style={{ borderCollapse: "collapse", borderWidth: "3px", borderBottom: "3px solid #ececec" }}>
                       <tr className="woocommerce-cart-form__cart-item cart_item">
 
                         <td className="product-price" data-title="Price">
@@ -184,15 +187,26 @@ export default function PaymentPage() {
                       </tr>
                       <tr className="woocommerce-cart-form__cart-item cart_item">
                         <td className="product-price" data-title="Price">
-                          <span className="woocommerce-Price-amount amount"><bdi> 1</bdi></span>						</td>
+                          <span className="woocommerce-Price-amount amount"><bdi>1</bdi></span>						</td>
                         <td className="product-quantity" data-title="Quantity">
                           <div className="quantity buttons_added">
                             <label className="screen-reader-text" htmlFor="quantity_649dd51a7fb41">{cardTypeName}</label>
                           </div>
                         </td>
                         <td className="product-subtotal" data-title="Subtotal">
-                          <span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span> 69</bdi></span>						</td>
+                          <span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span> {cardPrice}</bdi></span>						</td>
                       </tr>
+                      {isLogoAdded && <tr className="woocommerce-cart-form__cart-item cart_item">
+                        <td className="product-price" data-title="Price">
+                          <span className="woocommerce-Price-amount amount"><bdi> 1</bdi></span>						</td>
+                        <td className="product-quantity" data-title="Quantity">
+                          <div className="quantity buttons_added">
+                            <label className="screen-reader-text" htmlFor="quantity_649dd51a7fb41">Logo Added on Card</label>
+                          </div>
+                        </td>
+                        <td className="product-subtotal" data-title="Subtotal">
+                          <span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span> 29.99</bdi></span>						</td>
+                      </tr>}
                       {/* {isLogoAdded && <tr className="woocommerce-cart-form__cart-item cart_item">
                         <td className="product-price" data-title="Price">
                           <span className="woocommerce-Price-amount amount"><bdi> 1</bdi></span>						</td>
@@ -239,18 +253,18 @@ export default function PaymentPage() {
                   <table cellSpacing={0}>
                     <thead>
                       <tr>
-                        <th className="product-name" colSpan={2}>Totals</th>
+                        <th className="product-name" colSpan={2}>Breakdown</th>
                       </tr>
                     </thead>
                   </table>
-                  <h2>Totals</h2>
+                  {/* <h2>Totals</h2> */}
                   <table cellSpacing={0} className="shop_table shop_table_responsive">
                     <tbody><tr className="cart-subtotal">
                       <th>Subtotal</th>
-                      <td data-title="Subtotal"><span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span> {parseInt(price) + parseInt(cardPrice)}</bdi></span></td>
+                      <td data-title="Subtotal"><span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span> {totalAmoutTobePaid}</bdi></span></td>
                     </tr>
                       <tr className="woocommerce-shipping-totals shipping ">
-                        <td className="shipping__inner" colSpan={2}>
+                        <td className="shipping__inner">
                           <table className="shipping__table ">
                             <tbody>
                               <tr>
@@ -271,11 +285,11 @@ export default function PaymentPage() {
                       </tr>
                       <tr className="tax-total">
                         <th>Tax <small>(estimated for Canada)</small></th>
-                        <td data-title="Tax"><span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span>0.00</bdi></span></td>
+                        <td data-title="Tax"><span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span>{taxAmoutTobePaid.toFixed(2)}</bdi></span></td>
                       </tr>
                       <tr className="order-total">
-                        <th>Total</th>
-                        <td data-title="Total"><strong><span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span> {isLogoAdded ? parseInt(price) + parseInt(cardPrice) + 20 : parseInt(price) + parseInt(cardPrice)}</bdi></span></strong> </td>
+                        <th style={{ width: "74%" }}>Total</th>
+                        <td data-title="Total"><strong><span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span> {((taxAmoutTobePaid) + (totalAmoutTobePaid)).toFixed(2)}</bdi></span></strong> </td>
                       </tr>
                     </tbody></table>
                 </div>
@@ -287,14 +301,14 @@ export default function PaymentPage() {
         </div>
         <div className="p-5">
           <PayPalScriptProvider options={initialOptions}>
-            <div>                
+            <div>
               <br></br>
-                <PayPalButtons
-                  style={{ layout: "vertical" }}
-                  createOrder={createOrder}
-                  onApprove={onApprove}
-                  onError={onError}
-                />
+              <PayPalButtons
+                style={{ layout: "vertical" }}
+                createOrder={createOrder}
+                onApprove={onApprove}
+                onError={onError}
+              />
             </div>
           </PayPalScriptProvider>
         </div>

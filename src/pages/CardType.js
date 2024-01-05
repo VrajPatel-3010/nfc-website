@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Service.css";
-import { TextField, Button, Select, Stack, MenuItem, InputLabel } from '@mui/material';
+import { TextField, Stack } from '@mui/material';
 import AuthService from "../services/auth.service";
 import service from "../services/service";
 import { LoadingButton } from '@mui/lab';
@@ -14,9 +14,7 @@ export default function CardType() {
   if (user) {
     loginId = user.id;
   }
-  const [response, setResponse] = useState("");
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false)
   const [fName, setFName] = useState("")
   const [lName, setLName] = useState("")
@@ -75,15 +73,15 @@ export default function CardType() {
     if (cardType > 0) {
       amount = amount + 69
     }
-    if (isLogoAdded) {
-      amount = amount + 30
-    }
-    if (isFobAdded) {
-      amount = amount + 10
-    }
-    if (isSmartBtnAdded) {
-      amount = amount + 10
-    }
+    // if (isLogoAdded) {
+    //   amount = amount + 29.99
+    // }
+    // if (isFobAdded) {
+    //   amount = amount + 10
+    // }
+    // if (isSmartBtnAdded) {
+    //   amount = amount + 10
+    // }
 
     setPrice(amount)
     const formData = new FormData();
@@ -250,7 +248,7 @@ export default function CardType() {
                     </div>
                     <div className="form-group checkbox p-1">
                       <input type="checkbox" id="logoAdd" onClick={(event) => { if (event.target.checked) { setIsLogoAdded(true); } else { setIsLogoAdded(false); } }} />
-                      <div className="custom-design-checkbox__price price">+$30</div>
+                      <div className="custom-design-checkbox__price price">+$29.99</div>
                     </div>
                   </div>
                 </div>
