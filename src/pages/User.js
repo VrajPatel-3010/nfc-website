@@ -231,7 +231,7 @@ export default function User() {
           </Button> */}
         </Stack>
 
-        <Card style={{maxHeight:"100%"}}>
+        <Card style={{maxHeight:"100%",overflow:"scroll"}}>
             <TableContainer sx={{ minWidth: 800}}>
               <Table>
                 <UserListHead
