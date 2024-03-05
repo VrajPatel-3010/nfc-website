@@ -4,6 +4,7 @@ import Portfolio3 from '../pages/Portfolio3';
 import Portfolio4 from '../pages/Portfolio4';
 import Portfolio5 from '../pages/Portfolio5';
 import Portfolio6 from '../pages/Portfolio6';
+import Portfolio7 from '../pages/Portfolio7';
 import { useState, useEffect } from 'react';
 import service from "../services/service";
 import InactiveAccountPage from '../pages/InactiveAccountPage';
@@ -24,28 +25,26 @@ export default function ProfilePage({ phoneNo, themeId }) {
   }, []);
 
   return (
+
     <>
-          <div className='mt-5'>
-            {!inActive && themeId == 1 ?
-              <Portfolio phoneNo={phoneNo} withoutLogin="true" />
-              : <InactiveAccountPage />
+      <div className='mt-5'>
+        {(() => {
+          if (!inActive) {
+            switch (themeId) {
+              case "1": return <Portfolio phoneNo={phoneNo} withoutLogin="true" />;
+              case "2": return <Portfolio2 phoneNo={phoneNo} withoutLogin="true" />;
+              case "3": return <Portfolio3 phoneNo={phoneNo} withoutLogin="true" />;
+              case "4": return <Portfolio4 phoneNo={phoneNo} withoutLogin="true" />;
+              case "5": return <Portfolio5 phoneNo={phoneNo} withoutLogin="true" />;
+              case "6": return <Portfolio6 phoneNo={phoneNo} withoutLogin="true" />;
+              case "7": return <Portfolio7 phoneNo={phoneNo} withoutLogin="true" />;
+              default: <InactiveAccountPage />;
             }
-            {!inActive && themeId == 2 &&
-              <Portfolio2 phoneNo={phoneNo} withoutLogin="true" />
-            }
-            {!inActive && themeId == 3 &&
-              <Portfolio3 phoneNo={phoneNo} withoutLogin="true" />
-            }
-            {!inActive && themeId == 4 &&
-              <Portfolio4 phoneNo={phoneNo} withoutLogin="true" />
-            }
-            {!inActive && themeId == 5 &&
-              <Portfolio5 phoneNo={phoneNo} withoutLogin="true" />
-            }
-            {!inActive && themeId == 6 &&
-              <Portfolio6 phoneNo={phoneNo} withoutLogin="true" />
-            }
-          </div>
-        </>
+          }
+          else
+            return <InactiveAccountPage />
+        })()}
+      </div>
+    </>
   );
 }
