@@ -120,7 +120,7 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
 
 
             {!(USERLIST.url == '-' || USERLIST.url == '') ?
-              <div className="text-block-5"><FaLink /> <a href={USERLIST.url} style={{ color: "black" }}>{USERLIST.url}</a></div>
+              <div className="text-block-5"><FaLink /> <a href={"https://"+ USERLIST.url} style={{ color: "black" }}>{USERLIST.url}</a></div>
               : <></>}
 
             {!(USERLIST.email == '-' || USERLIST.email == '') ?
@@ -129,7 +129,7 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
             {!(USERLIST.address == '-' || USERLIST.address == '') ?
               <div className="text-block-5"><FaMapMarkerAlt /> {USERLIST.address}</div>
               : <></>}
-            <div className='flex' style={{gap:"75%",fontSize:"150%"}}>
+            {/* <div className='flex' style={{gap:"75%",fontSize:"150%"}}>
             {!(USERLIST.instagram == '') ?
               <div className="fa-2xs"><a href={USERLIST.instagram} style={{ color: "red",boxSizing:"20px" }}><FaInstagram /></a></div>
               : <></>}
@@ -142,7 +142,7 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
               {!(USERLIST.twitter == '') ?
               <div className=""><a href={USERLIST.twitter} style={{ color: "red" }}><FaTwitter /></a></div>
               : <></>}
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="actionbar">
