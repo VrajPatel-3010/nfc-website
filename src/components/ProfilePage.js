@@ -4,7 +4,7 @@ import Portfolio3 from '../pages/Portfolio3';
 import Portfolio4 from '../pages/Portfolio4';
 import Portfolio5 from '../pages/Portfolio5';
 import Portfolio6 from '../pages/Portfolio6';
-import Portfolio7 from '../pages/Portfolio7';
+// import Portfolio7 from '../pages/Portfolio7';
 import { useState, useEffect } from 'react';
 import service from "../services/service";
 import InactiveAccountPage from '../pages/InactiveAccountPage';
@@ -37,7 +37,7 @@ export default function ProfilePage({ phoneNo, themeId }) {
               case "4": return <Portfolio4 phoneNo={phoneNo} withoutLogin="true" />;
               case "5": return <Portfolio5 phoneNo={phoneNo} withoutLogin="true" />;
               case "6": return <Portfolio6 phoneNo={phoneNo} withoutLogin="true" />;
-              case "7": return <Portfolio7 phoneNo={phoneNo} withoutLogin="true" />;
+              // case "7": return <Portfolio7 phoneNo={phoneNo} withoutLogin="true" />;
               default: <InactiveAccountPage />;
             }
           }
