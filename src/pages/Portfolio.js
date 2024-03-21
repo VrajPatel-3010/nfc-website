@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaMapMarkerAlt, FaMobileAlt, FaMailBulk, FaWhatsapp, FaLink } from "react-icons/fa";
+import { FaMapMarkerAlt, FaMobileAlt, FaMailBulk, FaWhatsapp, FaLink, FaInstagram, FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { useEffect } from 'react';
 import AuthService from "../services/auth.service";
 import '../Portfolio.css';
@@ -129,6 +129,20 @@ export default function Portfolio({ phoneNo, withoutLogin }) {
             {!(USERLIST.address == '-' || USERLIST.address == '') ?
               <div className="text-block-5"><FaMapMarkerAlt /> {USERLIST.address}</div>
               : <></>}
+            <div className='flex' style={{gap:"75%",fontSize:"150%"}}>
+            {!(USERLIST.instagram == '') ?
+              <div className="fa-2xs"><a href={USERLIST.instagram} style={{ color: "red",boxSizing:"20px" }}><FaInstagram /></a></div>
+              : <></>}
+              {!(USERLIST.facebook == '') ?
+              <div className="fa-2xs"><a href={USERLIST.facebook} style={{ color: "red" }}><FaFacebook /></a></div>
+              : <></>}
+              {!(USERLIST.linkedin == '') ?
+              <div className=""><a href={USERLIST.linkedin} style={{ color: "red" }}><FaLinkedin /></a></div>
+              : <></>}
+              {!(USERLIST.twitter == '') ?
+              <div className=""><a href={USERLIST.twitter} style={{ color: "red" }}><FaTwitter /></a></div>
+              : <></>}
+            </div>
           </div>
         </div>
         <div className="actionbar">
