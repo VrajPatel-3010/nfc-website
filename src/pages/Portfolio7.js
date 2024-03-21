@@ -4,7 +4,7 @@ import AuthService from "../services/auth.service";
 import '../Portfolio7.css';
 import service from "../services/service";
 import React from "react"
-import sun from "../images/sun.png"
+// import sun from "../images/sun.png"
 import fb from "../images/facebook.png"
 import gh from "../images/github.png"
 import ig from "../images/instagram.png"
@@ -114,7 +114,7 @@ export default function Portfolio7({ phoneNo, withoutLogin }) {
   return (
     <main className={theme}>
       <div className="container7">
-        <img className="sun-moon" src={(theme === "light") ? sun : moon} onClick={Toggle} />
+        {/* <img className="sun-moon" src={(theme === "light") ? sun : moon} onClick={Toggle} /> */}
         <div className="profile-pic7"><img src={imgSrc}></img></div>
         <div className="details7">
           <h2>{USERLIST.firstName + " " + USERLIST.lastName}</h2>
