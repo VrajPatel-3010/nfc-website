@@ -1,0 +1,10 @@
+---
+deployment:
+  tasks:
+    - git clone https://github.com/VrajPatel-3010/nfc-website.git  # Clone the repository
+    - cd nfc-website   # Navigate into the project directory
+    - npm install      # Install project dependencies
+    - npm run build    # Build the React project
+    - export DEPLOYPATH=/home/d64v34ipe2ix/public_html/nfc-website  # Set the deployment path
+    - mkdir -p $DEPLOYPATH  # Create the deployment directory if it doesn't exist
+    - /bin/cp -r build/* $DEPLOYPATH  # Copy the built files to the deployment path
