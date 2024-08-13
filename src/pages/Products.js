@@ -365,15 +365,15 @@ export default function EcommerceShop() {
             </Card>
 
           </Grid>
-          {/* <Grid key={1} item xs={12} sm={6} md={4}>
+         <Grid key={1} item xs={12} sm={6} md={4}>
             <Card>
               <Box sx={{ pt: '100%', position: 'relative' }}>
-                <ProductImgStyle src="/static/mock-images/products/product_4.png" />
+                <ProductImgStyle src="/static/mock-images/products/product_7.png" />
               </Box>
               <Stack spacing={2} sx={{ p: 3 }}>
-                <Link to="#" color="inherit" underline="hover" component={RouterLink}>
+                <Link to="../portfolio7" color="inherit" underline="hover" component={RouterLink}>
                   <Typography variant="subtitle2" noWrap>
-                    Theme 4
+                    Theme 7
                   </Typography>
                 </Link>
 
@@ -390,7 +390,7 @@ export default function EcommerceShop() {
                     >
                     </Typography>
                     &nbsp;
-                    {"4"}
+                    {"7"}
                   </Typography>
                 </Stack>
               </Stack>
@@ -398,39 +398,6 @@ export default function EcommerceShop() {
             </Card>
             
           </Grid>
-          <Grid key={1} item xs={12} sm={6} md={4}>
-            <Card>
-              <Box sx={{ pt: '100%', position: 'relative' }}>
-                <ProductImgStyle src="/static/mock-images/products/product_5.png" />
-              </Box>
-              <Stack spacing={2} sx={{ p: 3 }}>
-                <Link to="#" color="inherit" underline="hover" component={RouterLink}>
-                  <Typography variant="subtitle2" noWrap>
-                    Theme 5
-                  </Typography>
-                </Link>
-
-                <Stack direction="row" alignItems="center" justifyContent="space-between">
-                  <ColorPreview colors="#7500fa" />
-                  <Typography variant="subtitle1">
-                    <Typography
-                      component="span"
-                      variant="body1"
-                      sx={{
-                        color: 'text.disabled',
-                        textDecoration: 'line-through',
-                      }}
-                    >
-                    </Typography>
-                    &nbsp;
-                    {"5"}
-                  </Typography>
-                </Stack>
-              </Stack>
-              
-            </Card>
-            
-          </Grid> */}
         </Grid>
 
         <ProductCartWidget />

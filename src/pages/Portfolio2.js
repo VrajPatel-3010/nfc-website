@@ -5,7 +5,7 @@ import AuthService from "../services/auth.service";
 import '../Portfolio2.css';
 import service from "../services/service";
 
-export default function Portfolio({ phoneNo, withoutLogin }) {
+export default function Portfolio2({ phoneNo, withoutLogin }) {
 
   // Get the contact information from the website 
   const downloadTxtFile = vcfText => {

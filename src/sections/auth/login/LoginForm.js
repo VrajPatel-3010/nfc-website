@@ -24,7 +24,9 @@ import Login from '../../../pages/Login';
 import $ from 'jquery';
 import Portfolio from '../../../pages/Portfolio';
 import ContactUs from '../../../pages/ContactUs';
+import UserService from '../../../pages/UserService';
 import ForgotPassword from '../../../pages/ForgotPassword';
+import Service from 'src/services/service';
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -132,6 +134,7 @@ export default function LoginForm() {
         <Route path='/user' element={<User />} /> {/*A nested route!*/}
         <Route path='/register' element={<Register />} /> {/*A nested route!*/}
         <Route path='/products' element={< Products />} /> {/*A nested route!*/}
+        <Route path='/UserService' element={<UserService />} /> {/*A nested route!*/}
         <Route path='/portfolio' element={< Portfolio/>} /> {/*A nested route!*/}
         <Route path='/contactUs' element={<ContactUs />} /> {/*A nested route!*/}
         <Route path='/ForgotPassword' element={<ForgotPassword />} /> {/*A nested route!*/}

@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import $ from 'jquery';
 
 // form
 import { useForm } from 'react-hook-form';
@@ -14,6 +15,7 @@ import Iconify from '../../../components/Iconify';
 import { FormProvider, RHFTextField } from '../../../components/hook-form';
 import service from "../../../services/service";
 import AuthService from "../../../services/auth.service";
+import Switch from '@mui/material/Switch';
 
 // ----------------------------------------------------------------------
 
@@ -27,6 +29,7 @@ export default function RegisterForm() {
   let alreadyRegister = false
   const [isUpdate, setIsUpdate] = useState(false)
   const [activeStatus, setActiveStatus] = useState(0)
+  const [checked, setChecked] = useState(false);
 
   if (id.state != null && id.state.id != null) {
     formId = id.state.id
@@ -60,11 +63,11 @@ export default function RegisterForm() {
       firstName: Yup.string().required('First name required'),
       lastName: Yup.string().required('Last name required'),
       //email: Yup.string().email('Email must be a valid email address').required('Email is required'),
-      phone: Yup.string().required('Phone no required').matches(/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/,'The field should have digits only'),
+      phone: Yup.string().required('Phone no required').matches(/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/, 'The field should have digits only'),
       //address: Yup.string().required('Address required'),
       title: Yup.string().required('Title'),
       org: Yup.string().required('Organization required'),
-      whatsappNo: Yup.string().matches(/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/,'The field should have digits only'),
+      whatsappNo: Yup.string().matches(/(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/, 'The field should have digits only'),
       //info: Yup.string().required('About us required'),
     }
 
@@ -85,6 +88,10 @@ export default function RegisterForm() {
     attachment: '',
     loginId: loginId,
     price: '',
+    instagram: '',
+    twitter: '',
+    facebook: '',
+    linkedin: '',
     activeStatus: 0,
   };
   const methods = useForm({
@@ -119,10 +126,18 @@ export default function RegisterForm() {
             loginId: resp.data.loginId,
             price: resp.data.price,
             activeStatus: resp.data.activeStatus,
+            instagram: resp.data.instagram,
+            twitter: resp.data.twitter,
+            facebook: resp.data.facebook,
+            linkedin: resp.data.linkedin,
           }))
 
           if (resp.data.activeStatus != null) {
             setActiveStatus(resp.data.activeStatus);
+          }
+          if (resp.data.socialMedia) {
+            //document.getElementById("socialMediaSwitch").click();
+            setChecked(true)
           }
         })
     }
@@ -171,25 +186,25 @@ export default function RegisterForm() {
       }
     }
     else {
-      if(!alreadyRegister){
-      service.create(formData)
-        .then(response => {
-          console.log(response.data);
-          setMessage("Data Submitted successfully !");
-          setSuccessful(true);
-          setLoading(false);
-        })
-        .catch(e => {
-          console.log(e);
-          setMessage("Issue in Data Submission ! ");
-          setLoading(false);
-        });
+      if (!alreadyRegister) {
+        service.create(formData)
+          .then(response => {
+            console.log(response.data);
+            setMessage("Data Submitted successfully !");
+            setSuccessful(true);
+            setLoading(false);
+          })
+          .catch(e => {
+            console.log(e);
+            setMessage("Issue in Data Submission ! ");
+            setLoading(false);
+          });
       }
-      else{
-          setMessage("You have already register ! Please use update method !");
-          setLoading(false);
+      else {
+        setMessage("You have already register ! Please use update method !");
+        setLoading(false);
       }
-  }
+    }
   };
 
   const deleteEntry = (data) => {
@@ -241,6 +256,18 @@ export default function RegisterForm() {
     }
   };
 
+  const handleSocialMedia = (event) => {
+    setChecked(event.target.checked);
+    if(!checked){
+      reset(formValues => ({
+        ...formValues,
+        instagram: '',
+        twitter: '',
+        facebook: '',
+        linkedin: '',
+      }))
+    }
+  };
 
 
   return (
@@ -307,6 +334,34 @@ export default function RegisterForm() {
             <RHFTextField name="address" label="Address" />
           </Stack>
 
+          <Typography variant="h4" gutterBottom>
+            Social Media <Switch
+            checked={checked}
+            onChange={handleSocialMedia}
+            id="socialMediaSwitch"
+          />
+          </Typography>
+          
+          {checked && <>  <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+              <Iconify icon="mdi:instagram" color="#DF3E30" width={40} height={50} />
+              <RHFTextField name="instagram" label="Instagram" />
+            </Stack>
+
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+              <Iconify icon="mdi:twitter" color="#DF3E30" width={40} height={50} />
+              <RHFTextField name="twitter" label="Twitter" />
+            </Stack>
+
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+              <Iconify icon="mdi:facebook" color="#DF3E30" width={40} height={50} />
+              <RHFTextField name="facebook" label="Facebook" />
+            </Stack>
+
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+              <Iconify icon="mdi:linkedin" color="#DF3E30" width={40} height={50} />
+              <RHFTextField name="linkedin" label="Linkedin" />
+            </Stack>
+          </>}
           {admin &&
             <>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>

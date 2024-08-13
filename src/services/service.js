@@ -66,6 +66,9 @@ class service {
   sendConfirmationEmail(id,baseUrl) {
     return http.get(`/sendConfirmationEmail/${id}`,baseUrl);
   }
+  confirmDelivery(id) {
+    return http.put(`/confirmDelivery/${id}`);
+  }
 }
 
 export default new service();

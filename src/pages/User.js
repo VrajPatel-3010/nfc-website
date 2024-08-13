@@ -97,11 +97,12 @@ export default function User() {
   TABLE_HEAD.push({ id: 'title', label: 'Title', alignRight: false },
     { id: 'firstname', label: 'Name', alignRight: false },
     { id: 'org', label: 'Company', alignRight: false },
-    { id: 'email', label: 'E-mail', alignRight: false },
+    // { id: 'email', label: 'E-mail', alignRight: false },
   );
 
   if (admin) {
     TABLE_HEAD.push({ id: 'price', label: 'Price', alignRight: false },)
+    TABLE_HEAD.push({ id: 'payment', label: 'Payment', alignRight: false },)
     TABLE_HEAD.push({ id: 'activeStatus', label: 'Status', alignRight: false },)
   }
   if(!teamMember){
@@ -245,8 +246,8 @@ export default function User() {
                 />
                 <TableBody>
                   {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    let { id, title, data, type, firstName, org, email, price, activeStatus } = row
-                    { admin ? { id, title, data, type, firstName, org, email, price, activeStatus } = row : { id, title, data, type, firstName, org, email } = row }
+                    let { id, title, data, type, firstName, org, email, price, payment, activeStatus } = row
+                    { admin ? { id, title, data, type, firstName, org, email, price, payment, activeStatus } = row : { id, title, data, type, firstName, org, email } = row }
 
                     const isItemSelected = selected.indexOf(firstName) !== -1;
 
@@ -268,8 +269,9 @@ export default function User() {
                         </TableCell>
                         <TableCell align="left">{firstName}</TableCell>
                         <TableCell align="left">{org}</TableCell>
-                        <TableCell align="left">{email}</TableCell>
+                        {/* <TableCell align="left">{email}</TableCell> */}
                         {admin && <TableCell align="left">$ {price}</TableCell>}
+                        {admin && <TableCell >{payment == 1 ? <Label variant="ghost" color='success'>Processed</Label> : <Label variant="ghost" color='error'>Pending</Label>}</TableCell>}
                         {admin && <TableCell >{activeStatus == 1 ? <Label variant="ghost" color='success'>Active</Label> : <Label variant="ghost" color='error'>Inactive</Label>}</TableCell>}
                         {!teamMember &&
                         <TableCell align="right">

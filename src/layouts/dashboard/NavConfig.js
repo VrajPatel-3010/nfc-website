@@ -33,9 +33,22 @@ navConfig.push({
     path: '/dashboard/products',
     icon: getIcon('vscode-icons:folder-type-theme'),
   },
+  // {
+  //   title: 'service',
+  //   path: '/dashboard/UserService',
+  //   icon: getIcon('eos-icons:service-plan-outlined'),
+  // },
 )
 
-if (!teamMember) {
+if (admin)  {
+  navConfig.push({
+    title: 'order',
+    path: '/dashboard/OrderPage',
+    icon: getIcon('material-symbols:order-approve'),
+  },)
+}
+
+if (!teamMember && !admin)  {
   navConfig.push({
     title: 'register',
     path: '/dashboard/register',

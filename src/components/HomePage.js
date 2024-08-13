@@ -12,8 +12,11 @@ import Portfolio2 from '../pages/Portfolio2';
 import Portfolio3 from '../pages/Portfolio3';
 import Portfolio4 from '../pages/Portfolio4';
 import Portfolio5 from '../pages/Portfolio5';
+import Portfolio7 from '../pages/Portfolio7';
 import Portfolio6 from '../pages/Portfolio6';
 import PaymentPage from '../pages/PaymentPage';
+import OrderPage from '../pages/OrderPage';
+
 import CardType from '../pages/CardType';
 import ForgotPassword from '../pages/ForgotPassword';
 
@@ -23,6 +26,7 @@ import $ from 'jquery';
 import DashboardLayout from '../layouts/dashboard';
 import LogoOnlyLayout from '../layouts/LogoOnlyLayout';
 import ContactUs from '../pages/ContactUs';
+import UserService from '../pages/UserService';
 
 
 // ----------------------------------------------------------------------
@@ -56,14 +60,17 @@ export default function HomePage() {
           <Route path='user' element={<User />} />
           <Route path='register' element={<Register />} /> {/*A nested route!*/}
           <Route path='products' element={<Products />} /> {/*A nested route!*/}
+          <Route path='UserService' element={<UserService />} /> {/*A nested route!*/}
           <Route path='portfolio' element={<Portfolio />} /> {/*A nested route!*/}
           <Route path='portfolio2' element={<Portfolio2 />} /> {/*A nested route!*/}
           <Route path='portfolio3' element={<Portfolio3 />} /> {/*A nested route!*/}
           <Route path='portfolio4' element={<Portfolio4 />} /> {/*A nested route!*/}
           <Route path='portfolio5' element={<Portfolio5 />} /> {/*A nested route!*/}
           <Route path='portfolio6' element={<Portfolio6 />} /> {/*A nested route!*/}
+          <Route path='portfolio7' element={<Portfolio7 />} /> {/*A nested route!*/}
           <Route path='contactUs' element={<ContactUs />} /> {/*A nested route!*/}
           <Route path='paymentPage' element={<PaymentPage />} /> {/*A nested route!*/}
+          <Route path='OrderPage' element={<OrderPage />} /> {/*A nested route!*/}
           <Route path='CardType' element={<CardType />} /> {/*A nested route!*/}
         </Route>
 
